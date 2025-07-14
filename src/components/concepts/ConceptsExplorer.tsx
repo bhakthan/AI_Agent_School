@@ -23,6 +23,7 @@ import SimpleTransformDemo from "../visualization/SimpleTransformDemo"
 import MCPArchitectureDiagram from "./MCPArchitectureDiagram"
 import AgentLifecycleVisual from "./AgentLifecycleVisual"
 import A2ACommunicationPatterns from "./A2ACommunicationPatterns"
+import A2AMultiAgentSystem from "./A2AMultiAgentSystem"
 import ACPProtocolStack from "./ACPProtocolStack"
 import ProtocolComparison from "./ProtocolComparison"
 import AgentCommunicationPlayground from "./AgentCommunicationPlayground"
@@ -338,6 +339,9 @@ const ConceptsExplorer = () => {
           
           {/* A2A Communication Patterns */}
           <A2ACommunicationPatterns />
+          
+          {/* Multi-Agent System Architecture */}
+          <A2AMultiAgentSystem />
           
           <Separator className="my-6" />
           

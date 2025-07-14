@@ -2,14 +2,56 @@
 
 **Where AI Agent Concepts Come to Life**
 
-An interactive educational platform for understanding AI agents, Agent-to-Agent (A2A) communication, Model Context Protocol (MCP), and Agent Communication Protocol (ACP). This application provides comprehensive visualizations, micro-learning modules, and hands-on demonstrations of modern AI agent architectures, including the revolutionary **MCP×A2A Integration### 🎨 Agent Communication Playground
+An interactive educational platform for understanding AI agents, Agent-to-Agent (A2A) communication, Model Context Protocol (MCP), and Agent Communication Protocol (ACP). This application provides comprehensive visualizations, micro-learning modules, and hands-on demonstrations of modern AI agent architectures, including the revolutionary **MCP×A2A Integration### 🎨 Agent Communication Pla### 🎨 Agent Communication Playground
+**Visual storytelling meets technical precision**:
+- **Protocol Simulations**: Watch MCP, A2A, and ACP protocols in action with animated message flows
+- **Component Architecture**: Visual representation of User → Claude → MCP Servers → Data Sources flow
+- **Message Type Tracking**: Real-time visualization of queries, responses, tool calls, and data exchanges
+- **State Management**: See components transition between idle, processing, responding, and error states
+- **Interactive Controls**: Play/pause animations, step through communications, reset scenarios
+
+### 🤖 A2A Multi-Agent System Demo
+**Enterprise E-commerce Scenario Visualization** - Complete multi-agent system coordination:
+- **Lane-Based Architecture**: Visual separation of Azure AI Agent, Google Gemini Agent, and MCP Tool Agent with cloud containers
+- **12-Step Animation Flow**: Step-by-step demonstration of complex customer query handling from initial request to final response
+- **Protocol-Specific Visualization**: Color-coded arrows and paths showing A2A (red), MCP (blue), and internal (green) communications
+- **Real-Time Component Highlighting**: Active components glow and pulse during their processing phases
+- **Detailed Technology Breakdown**: Each step shows specific technologies (A2A SDK, GenAI-processors, MCP Protocol, Azure Functions)
+- **Security Visualization**: OAuth 2.0 PKCE flow, session encryption, and secure backend proxy demonstrations
+- **Interactive Architecture Summary**: Post-animation breakdown of A2A, GenAI-processors, and MCP synergy
+- **Professional Styling**: Enterprise-grade visualization with comprehensive legend and educational content
+
+**Demo Scenario**:
+- **Customer Query**: "What are the eco-friendly features of the Aqua-Pure X1 water filter, and can you check my latest order status?"
+- **Agent Orchestration**: Customer Service Agent coordinates between Product Research (Google Gemini) and Order Management (Azure MCP)
+- **GenAI-processors Pipeline**: Modular task breakdown → delegation → synthesis workflow visualization
+- **Secure Tool Access**: MCP authentication with Azure API Management and encrypted session management
+- **Response Synthesis**: Final answer combining research results and order data with tracking information
 **Visual storytelling meets technical precision**:
 - **Protocol Simulations**: Watch MCP, A2A, ACP, and MCP×A2A integration protocols in action with animated message flows
 - **Component Architecture**: Visual representation of User → Claude → MCP Servers → Data Sources flow with A2A coordination layers
 - **Message Type Tracking**: Real-time visualization of queries, responses, tool calls, agent-to-agent coordination, and data exchanges
 - **State Management**: See components transition between idle, processing, responding, and error states across multi-agent workflows
 - **Interactive Controls**: Play/pause animations, step through communications, reset scenarios
-- **MCP×A2A Integration Demo**: Live demonstration of combined protocol operations in enterprise agent systemsork** that combines agent-to-tool and agent-to-agent communication protocols for enterprise-grade autonomous systems.
+- **MCP×A2A Integration Demo**: Live demonstration of combined protocol operations in enterprise agent systems
+
+### 🤖 A2A Multi-Agent System Demo
+**Comprehensive E-commerce Scenario Visualization** - Complete multi-agent system in action:
+- **Lane-Based Architecture**: Visual separation of Azure AI Agent, Google Gemini Agent, and MCP Tool Agent with cloud containers
+- **12-Step Animation Flow**: Step-by-step demonstration of complex customer query handling from initial request to final response
+- **Protocol-Specific Visualization**: Color-coded arrows and paths showing A2A (red), MCP (blue), and internal (green) communications
+- **Real-Time Component Highlighting**: Active components glow and pulse during their processing phases
+- **Detailed Technology Breakdown**: Each step shows specific technologies (A2A SDK, GenAI-processors, MCP Protocol, Azure Functions)
+- **Security Visualization**: OAuth 2.0 PKCE flow, session encryption, and secure backend proxy demonstrations
+- **Interactive Architecture Summary**: Post-animation breakdown of A2A, GenAI-processors, and MCP synergy
+- **Professional Styling**: Enterprise-grade visualization with comprehensive legend and educational content
+
+**Demo Features**:
+- **Customer Query**: "What are the eco-friendly features of the Aqua-Pure X1 water filter, and can you check my latest order status?"
+- **Agent Orchestration**: Customer Service Agent coordinates between Product Research (Google Gemini) and Order Management (Azure MCP)
+- **GenAI-processors Pipeline**: Modular task breakdown → delegation → synthesis workflow visualization
+- **Secure Tool Access**: MCP authentication with Azure API Management and encrypted session management
+- **Response Synthesis**: Final answer combining research results and order data with tracking information
 
 ## 🎮 Interactive Demos
 
@@ -96,6 +138,7 @@ An interactive educational platform for understanding AI agents, Agent-to-Agent 
 ### Core Visualizations
 - **Agent Lifecycle Visual**: Interactive SVG-based visualization showing the complete cognitive cycle of AI agents from input processing to learning
 - **A2A Communication Patterns**: Dynamic demonstrations of direct, broadcast, and hierarchical agent communication patterns
+- **A2A Multi-Agent System**: Comprehensive e-commerce scenario showing Azure AI Agent, Google Gemini Agent, and MCP Tool Agent coordination
 - **MCP Architecture Diagram**: Animated flow showing how the Model Context Protocol enables standardized agent communication
 - **Agent Communication Playground**: Interactive sandbox for exploring agent-to-agent interactions
 - **Protocol Comparison**: Side-by-side analysis of different communication protocols
@@ -247,6 +290,7 @@ src/
 │   ├── concepts/           # Core concept visualizations
 │   │   ├── AgentLifecycleVisual.tsx
 │   │   ├── A2ACommunicationPatterns.tsx
+│   │   ├── A2AMultiAgentSystem.tsx
 │   │   ├── MCPArchitectureDiagram.tsx
 │   │   ├── AgentCommunicationPlayground.tsx
 │   │   ├── ConceptsExplorer.tsx
