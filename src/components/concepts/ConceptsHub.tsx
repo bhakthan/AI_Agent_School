@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import { Brain, ArrowsHorizontal, Shield, Stack, ArrowRight, CheckCircle, BookOpen, LinkSimple, Graph, ChartBar } from "@phosphor-icons/react"
+import { Brain, ArrowsHorizontal, Shield, Stack, ArrowRight, CheckCircle, BookOpen, LinkSimple, Graph, ChartBar, Clock, Lock, Users } from "@phosphor-icons/react"
 import AIAgentsConcept from "./AIAgentsConcept"
 import A2ACommunicationConcept from "./A2ACommunicationConcept"
 import MCPConcept from "./MCPConcept"
@@ -12,6 +12,9 @@ import ACPConcept from "./ACPConcept"
 import MCPxA2AIntegrationConcept from "./MCPxA2AIntegrationConcept"
 import FlowVisualizationConcept from "./FlowVisualizationConcept"
 import DataVisualizationConcept from "./DataVisualizationConcept"
+import AgentArchitectureConcept from "./AgentArchitectureConcept"
+import AgentSecurityConcept from "./AgentSecurityConcept"
+import MultiAgentSystemsConcept from "./MultiAgentSystemsConcept"
 
 interface ConceptInfo {
   id: string
@@ -26,17 +29,52 @@ interface ConceptInfo {
 }
 
 const concepts: ConceptInfo[] = [
+  // Tier 1: Foundational Concepts
+  {
+    id: 'agent-architecture',
+    title: 'Agent Architecture & Lifecycle',
+    description: 'Understanding the fundamental building blocks and lifecycle of AI agents',
+    level: 'foundation',
+    icon: <Brain className="w-6 h-6" />,
+    color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400',
+    estimatedTime: '25-35 min',
+    prerequisites: [],
+    component: AgentArchitectureConcept
+  },
+  {
+    id: 'agent-security',
+    title: 'Agent Security & Trust',
+    description: 'Security mechanisms and trust models for AI agent systems',
+    level: 'foundation',
+    icon: <Shield className="w-6 h-6" />,
+    color: 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400',
+    estimatedTime: '30-40 min',
+    prerequisites: ['agent-architecture'],
+    component: AgentSecurityConcept
+  },
+  {
+    id: 'multi-agent-systems',
+    title: 'Multi-Agent Systems',
+    description: 'Coordination, collaboration, and emergent behavior in multi-agent systems',
+    level: 'foundation',
+    icon: <Users className="w-6 h-6" />,
+    color: 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400',
+    estimatedTime: '35-45 min',
+    prerequisites: ['agent-architecture'],
+    component: MultiAgentSystemsConcept
+  },
   {
     id: 'ai-agents',
     title: 'AI Agents',
     description: 'Learn about autonomous AI systems that can perceive, decide, and act',
     level: 'foundation',
     icon: <Brain className="w-6 h-6" />,
-    color: 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400',
+    color: 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400',
     estimatedTime: '20-30 min',
     prerequisites: [],
     component: AIAgentsConcept
   },
+  // Tier 2: Intermediate Concepts
   {
     id: 'a2a-communication',
     title: 'A2A Communication',
@@ -45,7 +83,7 @@ const concepts: ConceptInfo[] = [
     icon: <ArrowsHorizontal className="w-6 h-6" />,
     color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400',
     estimatedTime: '25-35 min',
-    prerequisites: [],
+    prerequisites: ['multi-agent-systems'],
     component: A2ACommunicationConcept
   },
   {
@@ -56,9 +94,21 @@ const concepts: ConceptInfo[] = [
     icon: <Shield className="w-6 h-6" />,
     color: 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400',
     estimatedTime: '30-40 min',
-    prerequisites: [],
+    prerequisites: ['agent-security'],
     component: MCPConcept
   },
+  {
+    id: 'flow-visualization',
+    title: 'Flow Visualization',
+    description: 'Interactive visualization of agent flows and interactions',
+    level: 'intermediate',
+    icon: <Graph className="w-6 h-6" />,
+    color: 'bg-teal-100 text-teal-800 dark:bg-teal-900/20 dark:text-teal-400',
+    estimatedTime: '30-40 min',
+    prerequisites: ['a2a-communication'],
+    component: FlowVisualizationConcept
+  },
+  // Tier 3: Advanced Concepts
   {
     id: 'acp',
     title: 'Agent Communication Protocol',
@@ -67,7 +117,7 @@ const concepts: ConceptInfo[] = [
     icon: <Stack className="w-6 h-6" />,
     color: 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400',
     estimatedTime: '35-45 min',
-    prerequisites: [],
+    prerequisites: ['a2a-communication'],
     component: ACPConcept
   },
   {
@@ -78,19 +128,8 @@ const concepts: ConceptInfo[] = [
     icon: <LinkSimple className="w-6 h-6" />,
     color: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900/20 dark:text-cyan-400',
     estimatedTime: '40-50 min',
-    prerequisites: [],
+    prerequisites: ['mcp', 'a2a-communication'],
     component: MCPxA2AIntegrationConcept
-  },
-  {
-    id: 'flow-visualization',
-    title: 'Flow Visualization',
-    description: 'Interactive visualization of agent flows and interactions',
-    level: 'intermediate',
-    icon: <Graph className="w-6 h-6" />,
-    color: 'bg-teal-100 text-teal-800 dark:bg-teal-900/20 dark:text-teal-400',
-    estimatedTime: '30-40 min',
-    prerequisites: [],
-    component: FlowVisualizationConcept
   },
   {
     id: 'data-visualization',
@@ -100,7 +139,7 @@ const concepts: ConceptInfo[] = [
     icon: <ChartBar className="w-6 h-6" />,
     color: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/20 dark:text-indigo-400',
     estimatedTime: '35-45 min',
-    prerequisites: [],
+    prerequisites: ['flow-visualization'],
     component: DataVisualizationConcept
   }
 ]
