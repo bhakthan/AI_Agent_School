@@ -4,11 +4,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import { Brain, ArrowsHorizontal, Shield, Stack, ArrowRight, CheckCircle, BookOpen } from "@phosphor-icons/react"
+import { Brain, ArrowsHorizontal, Shield, Stack, ArrowRight, CheckCircle, BookOpen, LinkSimple, Graph, ChartBar } from "@phosphor-icons/react"
 import AIAgentsConcept from "./AIAgentsConcept"
 import A2ACommunicationConcept from "./A2ACommunicationConcept"
 import MCPConcept from "./MCPConcept"
 import ACPConcept from "./ACPConcept"
+import MCPxA2AIntegrationConcept from "./MCPxA2AIntegrationConcept"
+import FlowVisualizationConcept from "./FlowVisualizationConcept"
+import DataVisualizationConcept from "./DataVisualizationConcept"
 
 interface ConceptInfo {
   id: string
@@ -19,7 +22,7 @@ interface ConceptInfo {
   color: string
   estimatedTime: string
   prerequisites: string[]
-  component: React.ComponentType<{ onMarkComplete?: () => void }>
+  component: React.ComponentType<{ onMarkComplete?: () => void; onNavigateToNext?: (nextConceptId: string) => void }>
 }
 
 const concepts: ConceptInfo[] = [
@@ -42,7 +45,7 @@ const concepts: ConceptInfo[] = [
     icon: <ArrowsHorizontal className="w-6 h-6" />,
     color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400',
     estimatedTime: '25-35 min',
-    prerequisites: ['ai-agents'],
+    prerequisites: [],
     component: A2ACommunicationConcept
   },
   {
@@ -53,7 +56,7 @@ const concepts: ConceptInfo[] = [
     icon: <Shield className="w-6 h-6" />,
     color: 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400',
     estimatedTime: '30-40 min',
-    prerequisites: ['ai-agents'],
+    prerequisites: [],
     component: MCPConcept
   },
   {
@@ -64,8 +67,41 @@ const concepts: ConceptInfo[] = [
     icon: <Stack className="w-6 h-6" />,
     color: 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400',
     estimatedTime: '35-45 min',
-    prerequisites: ['ai-agents', 'a2a-communication', 'mcp'],
+    prerequisites: [],
     component: ACPConcept
+  },
+  {
+    id: 'mcp-a2a-integration',
+    title: 'MCP x A2A Integration',
+    description: 'Integrate Model Context Protocol with Agent-to-Agent communication',
+    level: 'advanced',
+    icon: <LinkSimple className="w-6 h-6" />,
+    color: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900/20 dark:text-cyan-400',
+    estimatedTime: '40-50 min',
+    prerequisites: [],
+    component: MCPxA2AIntegrationConcept
+  },
+  {
+    id: 'flow-visualization',
+    title: 'Flow Visualization',
+    description: 'Interactive visualization of agent flows and interactions',
+    level: 'intermediate',
+    icon: <Graph className="w-6 h-6" />,
+    color: 'bg-teal-100 text-teal-800 dark:bg-teal-900/20 dark:text-teal-400',
+    estimatedTime: '30-40 min',
+    prerequisites: [],
+    component: FlowVisualizationConcept
+  },
+  {
+    id: 'data-visualization',
+    title: 'Data Visualization',
+    description: 'Advanced data visualization techniques for AI agent systems',
+    level: 'advanced',
+    icon: <ChartBar className="w-6 h-6" />,
+    color: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/20 dark:text-indigo-400',
+    estimatedTime: '35-45 min',
+    prerequisites: [],
+    component: DataVisualizationConcept
   }
 ]
 
@@ -79,6 +115,10 @@ export default function ConceptsHub() {
 
   const handleBackToHub = () => {
     setSelectedConcept(null)
+  }
+
+  const handleNextConcept = (nextConceptId: string) => {
+    setSelectedConcept(nextConceptId)
   }
 
   const markConceptComplete = (conceptId: string) => {
@@ -101,7 +141,10 @@ export default function ConceptsHub() {
               <Badge className={concept.color}>{concept.level}</Badge>
             </div>
           </div>
-          <ConceptComponent onMarkComplete={() => markConceptComplete(selectedConcept)} />
+          <ConceptComponent 
+            onMarkComplete={() => markConceptComplete(selectedConcept)}
+            onNavigateToNext={handleNextConcept}
+          />
         </div>
       )
     }
@@ -136,23 +179,17 @@ export default function ConceptsHub() {
       </Card>
 
       {/* Learning Path */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {concepts.map((concept, index) => {
           const isCompleted = completedConcepts.has(concept.id)
-          const prerequisitesMet = concept.prerequisites.every(prereq => 
-            completedConcepts.has(prereq)
-          )
-          const isLocked = concept.prerequisites.length > 0 && !prerequisitesMet
+          // All concepts are now enabled by default for users familiar with AI Agents
+          const isLocked = false
 
           return (
             <Card 
               key={concept.id}
-              className={`relative transition-all ${
-                isLocked 
-                  ? 'opacity-50 cursor-not-allowed' 
-                  : 'hover:shadow-lg cursor-pointer'
-              }`}
-              onClick={() => !isLocked && handleConceptSelect(concept.id)}
+              className={`relative transition-all hover:shadow-lg cursor-pointer`}
+              onClick={() => handleConceptSelect(concept.id)}
             >
               <CardHeader>
                 <div className="flex items-start justify-between">
@@ -186,49 +223,19 @@ export default function ConceptsHub() {
                 <p className="text-sm text-muted-foreground mb-4">
                   {concept.description}
                 </p>
-                
-                {concept.prerequisites.length > 0 && (
-                  <div className="mb-4">
-                    <p className="text-xs font-medium text-muted-foreground mb-2">
-                      Prerequisites:
-                    </p>
-                    <div className="flex flex-wrap gap-1">
-                      {concept.prerequisites.map(prereq => {
-                        const prereqConcept = concepts.find(c => c.id === prereq)
-                        const prereqCompleted = completedConcepts.has(prereq)
-                        return (
-                          <Badge 
-                            key={prereq} 
-                            variant="outline" 
-                            className={`text-xs ${
-                              prereqCompleted 
-                                ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' 
-                                : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
-                            }`}
-                          >
-                            {prereqCompleted && <CheckCircle className="w-3 h-3 mr-1" />}
-                            {prereqConcept?.title}
-                          </Badge>
-                        )
-                      })}
-                    </div>
-                  </div>
-                )}
 
                 <div className="flex items-center justify-between">
                   <div className="text-xs text-muted-foreground">
-                    {isCompleted ? 'Completed' : isLocked ? 'Locked' : 'Ready to start'}
+                    {isCompleted ? 'Completed' : 'Ready to start'}
                   </div>
-                  {!isLocked && (
-                    <Button 
-                      variant={isCompleted ? "outline" : "default"}
-                      size="sm"
-                      className="flex items-center gap-1"
-                    >
-                      {isCompleted ? 'Review' : 'Start Learning'}
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  )}
+                  <Button 
+                    variant={isCompleted ? "outline" : "default"}
+                    size="sm"
+                    className="flex items-center gap-1"
+                  >
+                    {isCompleted ? 'Review' : 'Start Learning'}
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
                 </div>
               </CardContent>
             </Card>

@@ -8,9 +8,10 @@ import { ArrowsHorizontal, Network, GitBranch, Sparkle } from "@phosphor-icons/r
 
 interface A2ACommunicationConceptProps {
   onMarkComplete?: () => void
+  onNavigateToNext?: (nextConceptId: string) => void
 }
 
-export default function A2ACommunicationConcept({ onMarkComplete }: A2ACommunicationConceptProps) {
+export default function A2ACommunicationConcept({ onMarkComplete, onNavigateToNext }: A2ACommunicationConceptProps) {
   const tabs = [
     {
       id: 'fundamentals',
@@ -326,6 +327,7 @@ export default function A2ACommunicationConcept({ onMarkComplete }: A2ACommunica
         description: 'Secure tool integration for AI agents'
       }}
       onMarkComplete={onMarkComplete}
+      onNavigateToNext={onNavigateToNext}
     />
   )
 }

@@ -8,9 +8,10 @@ import { Shield, Plug, Lock, Database } from "@phosphor-icons/react"
 
 interface MCPConceptProps {
   onMarkComplete?: () => void
+  onNavigateToNext?: (nextConceptId: string) => void
 }
 
-export default function MCPConcept({ onMarkComplete }: MCPConceptProps) {
+export default function MCPConcept({ onMarkComplete, onNavigateToNext }: MCPConceptProps) {
   const tabs = [
     {
       id: 'fundamentals',
@@ -379,6 +380,7 @@ export default function MCPConcept({ onMarkComplete }: MCPConceptProps) {
         description: 'Advanced protocols for agent coordination'
       }}
       onMarkComplete={onMarkComplete}
+      onNavigateToNext={onNavigateToNext}
     />
   )
 }

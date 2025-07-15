@@ -9,9 +9,10 @@ import { Brain, Users, Code, Lightbulb } from "@phosphor-icons/react"
 
 interface AIAgentsConceptProps {
   onMarkComplete?: () => void
+  onNavigateToNext?: (nextConceptId: string) => void
 }
 
-export default function AIAgentsConcept({ onMarkComplete }: AIAgentsConceptProps) {
+export default function AIAgentsConcept({ onMarkComplete, onNavigateToNext }: AIAgentsConceptProps) {
   const tabs = [
     {
       id: 'fundamentals',
@@ -339,6 +340,7 @@ class SimpleAgent {
         description: 'How AI agents communicate with each other'
       }}
       onMarkComplete={onMarkComplete}
+      onNavigateToNext={onNavigateToNext}
     />
   )
 }

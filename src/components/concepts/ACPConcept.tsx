@@ -9,9 +9,10 @@ import { Stack, Lightning, Rocket, Crown } from "@phosphor-icons/react"
 
 interface ACPConceptProps {
   onMarkComplete?: () => void
+  onNavigateToNext?: (nextConceptId: string) => void
 }
 
-export default function ACPConcept({ onMarkComplete }: ACPConceptProps) {
+export default function ACPConcept({ onMarkComplete, onNavigateToNext }: ACPConceptProps) {
   const tabs = [
     {
       id: 'fundamentals',
@@ -400,7 +401,13 @@ export default function ACPConcept({ onMarkComplete }: ACPConceptProps) {
       title="Agent Communication Protocol (ACP)"
       description="Master advanced agent coordination protocols for enterprise-scale multi-agent systems"
       tabs={tabs}
+      nextConcept={{
+        id: 'mcp-a2a-integration',
+        title: 'MCP x A2A Integration',
+        description: 'Integrate MCP with A2A communication'
+      }}
       onMarkComplete={onMarkComplete}
+      onNavigateToNext={onNavigateToNext}
     />
   )
 }

@@ -28,6 +28,7 @@ interface ConceptLayoutProps {
     description: string
   }
   onMarkComplete?: () => void
+  onNavigateToNext?: (nextConceptId: string) => void
 }
 
 const levelColors = {
@@ -44,7 +45,7 @@ const levelIcons = {
   advanced: <GraduationCap className="w-4 h-4" />
 }
 
-export default function ConceptLayout({ conceptId, title, description, tabs, nextConcept, onMarkComplete }: ConceptLayoutProps) {
+export default function ConceptLayout({ conceptId, title, description, tabs, nextConcept, onMarkComplete, onNavigateToNext }: ConceptLayoutProps) {
   const [activeTab, setActiveTab] = useState(tabs[0]?.id || '')
   const [completedTabs, setCompletedTabs] = useState<Set<string>>(new Set())
   const [isConceptComplete, setIsConceptComplete] = useState(false)
@@ -195,7 +196,10 @@ export default function ConceptLayout({ conceptId, title, description, tabs, nex
                     ) : (
                       nextConcept && (
                         <Button
-                          onClick={() => handleTabComplete(activeTab)}
+                          onClick={() => {
+                            handleTabComplete(activeTab)
+                            onNavigateToNext?.(nextConcept.id)
+                          }}
                           className="flex items-center gap-2"
                         >
                           Next: {nextConcept.title}
