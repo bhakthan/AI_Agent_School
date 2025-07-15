@@ -3,7 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Graph, Eye, Code, Sparkle } from "@phosphor-icons/react"
 import CustomizableFlowDemo from "../visualization/CustomizableFlowDemo"
-import PatternDemoReactFlow from "../interactive-demos/PatternDemoReactFlow"
+import { PatternDemoSVG } from "../interactive-demos/PatternDemoSVG"
+import FlowArchitectureVisualizer from "../visualization/FlowArchitectureVisualizer"
 import AlgorithmVisualizer from "../visualization/AlgorithmVisualizer"
 import ComparisonTimelineVisualizer from "../visualization/ComparisonTimelineVisualizer"
 import { parallelizationPattern, promptChainingPattern as chainOfThoughtPattern } from "@/lib/data/patterns/index"
@@ -149,16 +150,16 @@ export default function FlowVisualizationConcept({ onMarkComplete, onNavigateToN
             </CardContent>
           </Card>
 
-          {/* Pattern Flow Demo */}
+          {/* Architecture Visualization */}
           <Card>
             <CardHeader>
-              <CardTitle>Agent Pattern Flow Visualization</CardTitle>
+              <CardTitle>Architecture Flow Visualization</CardTitle>
               <CardDescription>
-                Visualize complex agent patterns with interactive controls
+                Visualize agent architecture with layered SVG-based flow diagrams
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <PatternDemoReactFlow patternData={parallelizationPattern} />
+              <FlowArchitectureVisualizer patternData={parallelizationPattern} />
             </CardContent>
           </Card>
 
@@ -171,6 +172,20 @@ export default function FlowVisualizationConcept({ onMarkComplete, onNavigateToN
               <div className="space-y-4">
                 <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
                   <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-2">
+                    SVG-based Visualization
+                  </h4>
+                  <p className="text-sm mb-2">
+                    Lightweight, scalable vector graphics for responsive flow diagrams
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline" className="text-xs">Lightweight</Badge>
+                    <Badge variant="outline" className="text-xs">Scalable</Badge>
+                    <Badge variant="outline" className="text-xs">CSS-friendly</Badge>
+                    <Badge variant="outline" className="text-xs">Performant</Badge>
+                  </div>
+                </div>
+                <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+                  <h4 className="font-semibold text-green-800 dark:text-green-200 mb-2">
                     React Flow
                   </h4>
                   <p className="text-sm mb-2">
@@ -180,19 +195,6 @@ export default function FlowVisualizationConcept({ onMarkComplete, onNavigateToN
                     <Badge variant="outline" className="text-xs">Interactive</Badge>
                     <Badge variant="outline" className="text-xs">Customizable</Badge>
                     <Badge variant="outline" className="text-xs">Real-time</Badge>
-                  </div>
-                </div>
-                <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
-                  <h4 className="font-semibold text-green-800 dark:text-green-200 mb-2">
-                    D3.js
-                  </h4>
-                  <p className="text-sm mb-2">
-                    Powerful data visualization library for creating complex, animated charts
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="outline" className="text-xs">Flexible</Badge>
-                    <Badge variant="outline" className="text-xs">Animated</Badge>
-                    <Badge variant="outline" className="text-xs">Data-driven</Badge>
                   </div>
                 </div>
                 <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
@@ -322,31 +324,94 @@ export default function FlowVisualizationConcept({ onMarkComplete, onNavigateToN
           {/* Code Example */}
           <Card>
             <CardHeader>
-              <CardTitle>React Flow Example</CardTitle>
+              <CardTitle>SVG Flow Visualization Example</CardTitle>
             </CardHeader>
             <CardContent>
               <pre className="text-xs bg-background p-3 rounded border overflow-x-auto">
-{`import ReactFlow, { useNodesState, useEdgesState } from 'reactflow';
+{`import React, { useState, useEffect } from 'react';
 
-const FlowVisualization = ({ agentData }) => {
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+const SVGFlowVisualization = ({ agentData }) => {
+  const [nodes, setNodes] = useState([]);
+  const [edges, setEdges] = useState([]);
+  const [activeFlows, setActiveFlows] = useState([]);
 
-  // Transform agent data into nodes and edges
+  // Transform agent data into SVG elements
   useEffect(() => {
-    const flowNodes = agentData.agents.map(agent => ({
+    const svgNodes = agentData.agents.map(agent => ({
       id: agent.id,
-      position: agent.position,
-      data: { label: agent.name, status: agent.status },
-      type: 'agentNode'
+      x: agent.position.x,
+      y: agent.position.y,
+      label: agent.name,
+      status: agent.status,
+      nodeType: agent.type
     }));
 
-    const flowEdges = agentData.communications.map(comm => ({
+    const svgEdges = agentData.communications.map(comm => ({
       id: comm.id,
       source: comm.from,
       target: comm.to,
       label: comm.message,
-      animated: comm.active
+      active: comm.active
+    }));
+
+    setNodes(svgNodes);
+    setEdges(svgEdges);
+  }, [agentData]);
+
+  return (
+    <svg width="800" height="600" viewBox="0 0 800 600">
+      {/* Render edges */}
+      {edges.map(edge => (
+        <line
+          key={edge.id}
+          x1={nodes.find(n => n.id === edge.source)?.x}
+          y1={nodes.find(n => n.id === edge.source)?.y}
+          x2={nodes.find(n => n.id === edge.target)?.x}
+          y2={nodes.find(n => n.id === edge.target)?.y}
+          stroke={edge.active ? '#3b82f6' : '#9ca3af'}
+          strokeWidth="2"
+          className={edge.active ? 'animate-pulse' : ''}
+        />
+      ))}
+      
+      {/* Render nodes */}
+      {nodes.map(node => (
+        <g key={node.id}>
+          <rect
+            x={node.x}
+            y={node.y}
+            width="120"
+            height="60"
+            rx="8"
+            fill={node.status === 'active' ? '#3b82f6' : '#f3f4f6'}
+            stroke="#d1d5db"
+            strokeWidth="2"
+          />
+          <text
+            x={node.x + 60}
+            y={node.y + 35}
+            textAnchor="middle"
+            className="text-sm font-medium"
+          >
+            {node.label}
+          </text>
+        </g>
+      ))}
+      
+      {/* Render data flows */}
+      {activeFlows.map(flow => (
+        <circle
+          key={flow.id}
+          cx={flow.x}
+          cy={flow.y}
+          r="4"
+          fill="#10b981"
+          className="animate-pulse"
+        />
+      ))}
+    </svg>
+  );
+};`}
     }));
 
     setNodes(flowNodes);
@@ -427,6 +492,19 @@ const FlowVisualization = ({ agentData }) => {
                 onReset={() => {}}
                 isSimulating={false}
               />
+            </CardContent>
+          </Card>
+
+          {/* SVG Pattern Demo */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Interactive SVG Pattern Demo</CardTitle>
+              <CardDescription>
+                Pure SVG-based pattern visualization with advanced controls
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <PatternDemoSVG patternData={chainOfThoughtPattern} />
             </CardContent>
           </Card>
 
