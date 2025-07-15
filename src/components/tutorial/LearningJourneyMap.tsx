@@ -6,7 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import { 
   Brain, PuzzlePiece, StackSimple, Books, Users, 
   CheckCircle, Circle, Star, TrendUp, Target, 
-  Path, MapPin, Trophy, Sparkle, GraduationCap
+  Path, MapPin, Trophy, Sparkle, GraduationCap,
+  ArrowsHorizontal, Shield, Stack, LinkSimple, 
+  Graph, ChartBar, Lock, Package, Scales
 } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
@@ -43,35 +45,237 @@ interface LearningJourneyMapProps {
 
 const learningPaths: LearningPath[] = [
   {
-    id: 'beginner-path',
-    title: 'Beginner\'s Journey',
-    description: 'Start your AI agent learning adventure',
-    recommendedOrder: ['core-concepts', 'azure-services', 'references', 'community', 'agent-patterns', 'quiz'],
+    id: 'comprehensive-path',
+    title: 'Complete AI Agent Mastery',
+    description: 'Comprehensive learning path covering all core concepts in 4 progressive tiers',
+    recommendedOrder: [
+      // Tier 1: Foundational Concepts
+      'agent-architecture', 'agent-security', 'multi-agent-systems', 'agent-ethics', 'ai-agents',
+      // Tier 2: Architecture Concepts  
+      'a2a-communication', 'mcp', 'flow-visualization',
+      // Tier 3: Implementation Concepts
+      'acp', 'mcp-a2a-integration', 'data-visualization',
+      // Tier 4: Advanced Concepts
+      'agent-deployment', 'agent-learning', 'agent-integration',
+      // Additional Learning
+      'azure-services', 'references', 'community', 'patterns', 'quiz'
+    ],
     totalProgress: 0,
     nodes: [
+      // Tier 1: Foundational Concepts
       {
-        id: 'core-concepts',
-        title: 'Core Concepts',
-        description: 'Fundamental AI agent concepts',
+        id: 'agent-architecture',
+        title: 'Agent Architecture & Lifecycle',
+        description: 'Fundamental building blocks and lifecycle of AI agents',
         icon: <Brain size={20} />,
         difficulty: 'beginner',
-        estimatedTime: '25-30 min',
+        estimatedTime: '25-35 min',
         prerequisites: [],
-        skills: ['Agent Lifecycle', 'Communication Patterns', 'Protocol Basics'],
+        skills: ['Agent Lifecycle', 'Core Architecture', 'Design Patterns'],
         completionRate: 0,
         isCompleted: false,
         isUnlocked: true,
-        path: '/'
+        path: '/concepts'
       },
       {
+        id: 'agent-security',
+        title: 'Agent Security & Trust',
+        description: 'Security mechanisms and trust models for AI agents',
+        icon: <Shield size={20} />,
+        difficulty: 'beginner',
+        estimatedTime: '30-40 min',
+        prerequisites: ['agent-architecture'],
+        skills: ['Security Models', 'Trust Mechanisms', 'Threat Mitigation'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      {
+        id: 'multi-agent-systems',
+        title: 'Multi-Agent Systems',
+        description: 'Coordination and collaboration in multi-agent environments',
+        icon: <Users size={20} />,
+        difficulty: 'beginner',
+        estimatedTime: '35-45 min',
+        prerequisites: ['agent-architecture'],
+        skills: ['Multi-Agent Coordination', 'Collaboration Patterns', 'Emergent Behavior'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      {
+        id: 'agent-ethics',
+        title: 'Agent Ethics & Governance',
+        description: 'Ethical principles and governance for AI agents',
+        icon: <Scales size={20} />,
+        difficulty: 'beginner',
+        estimatedTime: '35-45 min',
+        prerequisites: ['agent-architecture'],
+        skills: ['Ethics Principles', 'Bias Mitigation', 'Regulatory Compliance'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      {
+        id: 'ai-agents',
+        title: 'AI Agents',
+        description: 'Autonomous AI systems that perceive, decide, and act',
+        icon: <Brain size={20} />,
+        difficulty: 'beginner',
+        estimatedTime: '20-30 min',
+        prerequisites: [],
+        skills: ['Agent Fundamentals', 'Autonomy', 'Decision Making'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: true,
+        path: '/concepts'
+      },
+      
+      // Tier 2: Architecture Concepts
+      {
+        id: 'a2a-communication',
+        title: 'A2A Communication',
+        description: 'Agent-to-Agent communication and coordination',
+        icon: <ArrowsHorizontal size={20} />,
+        difficulty: 'intermediate',
+        estimatedTime: '25-35 min',
+        prerequisites: ['multi-agent-systems'],
+        skills: ['Communication Protocols', 'Message Passing', 'Coordination'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      {
+        id: 'mcp',
+        title: 'Model Context Protocol',
+        description: 'Secure tool integration protocol for AI agents',
+        icon: <Shield size={20} />,
+        difficulty: 'intermediate',
+        estimatedTime: '30-40 min',
+        prerequisites: ['agent-security'],
+        skills: ['MCP Protocol', 'Tool Integration', 'Security Patterns'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      {
+        id: 'flow-visualization',
+        title: 'Flow Visualization',
+        description: 'Interactive visualization of agent flows and interactions',
+        icon: <Graph size={20} />,
+        difficulty: 'intermediate',
+        estimatedTime: '30-40 min',
+        prerequisites: ['a2a-communication'],
+        skills: ['Flow Visualization', 'Interactive Diagrams', 'System Analysis'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      
+      // Tier 3: Implementation Concepts
+      {
+        id: 'acp',
+        title: 'Agent Communication Protocol',
+        description: 'Advanced protocols for enterprise-scale coordination',
+        icon: <Stack size={20} />,
+        difficulty: 'intermediate',
+        estimatedTime: '35-45 min',
+        prerequisites: ['a2a-communication'],
+        skills: ['ACP Protocol', 'Enterprise Architecture', 'Scale Coordination'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      {
+        id: 'mcp-a2a-integration',
+        title: 'MCP × A2A Integration',
+        description: 'Integrate MCP with Agent-to-Agent communication',
+        icon: <LinkSimple size={20} />,
+        difficulty: 'intermediate',
+        estimatedTime: '40-50 min',
+        prerequisites: ['mcp', 'a2a-communication'],
+        skills: ['Protocol Integration', 'Hybrid Systems', 'Advanced Coordination'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      {
+        id: 'data-visualization',
+        title: 'Data Visualization',
+        description: 'Advanced data visualization for AI agent systems',
+        icon: <ChartBar size={20} />,
+        difficulty: 'intermediate',
+        estimatedTime: '35-45 min',
+        prerequisites: ['flow-visualization'],
+        skills: ['Data Visualization', 'Analytics', 'Dashboard Design'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      
+      // Tier 4: Advanced Concepts
+      {
+        id: 'agent-deployment',
+        title: 'Agent Deployment & Operations',
+        description: 'Production deployment and operations for AI agents',
+        icon: <Package size={20} />,
+        difficulty: 'advanced',
+        estimatedTime: '40-50 min',
+        prerequisites: ['acp'],
+        skills: ['Deployment', 'Containerization', 'Monitoring', 'DevOps'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      {
+        id: 'agent-learning',
+        title: 'Agent Learning & Adaptation',
+        description: 'Advanced learning techniques for AI agents',
+        icon: <Brain size={20} />,
+        difficulty: 'advanced',
+        estimatedTime: '45-55 min',
+        prerequisites: ['ai-agents'],
+        skills: ['Reinforcement Learning', 'Transfer Learning', 'Meta-Learning'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      {
+        id: 'agent-integration',
+        title: 'Agent Integration Patterns',
+        description: 'Integration patterns for enterprise AI agent systems',
+        icon: <LinkSimple size={20} />,
+        difficulty: 'advanced',
+        estimatedTime: '40-50 min',
+        prerequisites: ['mcp-a2a-integration'],
+        skills: ['Integration Patterns', 'API Design', 'Enterprise Architecture'],
+        completionRate: 0,
+        isCompleted: false,
+        isUnlocked: false,
+        path: '/concepts'
+      },
+      
+      // Additional Learning Resources
+      {
         id: 'azure-services',
-        title: 'Azure Services',
-        description: 'Cloud AI service integration',
+        title: 'Azure AI Services',
+        description: 'Cloud AI service integration with Azure',
         icon: <StackSimple size={20} />,
         difficulty: 'intermediate',
         estimatedTime: '20-25 min',
-        prerequisites: ['core-concepts'],
-        skills: ['Service Integration', 'API Usage', 'Cloud Architecture'],
+        prerequisites: ['agent-integration'],
+        skills: ['Azure Integration', 'Cloud Services', 'API Usage'],
         completionRate: 0,
         isCompleted: false,
         isUnlocked: false,
@@ -79,13 +283,13 @@ const learningPaths: LearningPath[] = [
       },
       {
         id: 'references',
-        title: 'References',
+        title: 'References & Documentation',
         description: 'Essential documentation and resources',
         icon: <Books size={20} />,
         difficulty: 'beginner',
         estimatedTime: '15-20 min',
         prerequisites: [],
-        skills: ['Documentation Navigation', 'Resource Discovery'],
+        skills: ['Documentation', 'Resource Discovery', 'Best Practices'],
         completionRate: 0,
         isCompleted: false,
         isUnlocked: true,
@@ -93,27 +297,27 @@ const learningPaths: LearningPath[] = [
       },
       {
         id: 'community',
-        title: 'Community',
-        description: 'Connect and share with others',
+        title: 'Community & Sharing',
+        description: 'Connect and share with the AI agent community',
         icon: <Users size={20} />,
         difficulty: 'beginner',
         estimatedTime: '10-15 min',
         prerequisites: [],
-        skills: ['Community Engagement', 'Knowledge Sharing'],
+        skills: ['Community Engagement', 'Knowledge Sharing', 'Collaboration'],
         completionRate: 0,
         isCompleted: false,
         isUnlocked: true,
         path: '/community'
       },
       {
-        id: 'agent-patterns',
-        title: 'Agent Patterns',
-        description: 'Implementation patterns and best practices',
+        id: 'patterns',
+        title: 'Agent Patterns & Examples',
+        description: 'Implementation patterns and real-world examples',
         icon: <PuzzlePiece size={20} />,
         difficulty: 'advanced',
         estimatedTime: '35-40 min',
-        prerequisites: ['core-concepts', 'azure-services'],
-        skills: ['Pattern Implementation', 'Best Practices', 'Code Examples'],
+        prerequisites: ['agent-deployment', 'agent-learning', 'agent-integration'],
+        skills: ['Design Patterns', 'Implementation Examples', 'Best Practices'],
         completionRate: 0,
         isCompleted: false,
         isUnlocked: false,
@@ -121,13 +325,13 @@ const learningPaths: LearningPath[] = [
       },
       {
         id: 'quiz',
-        title: 'Knowledge Quiz',
-        description: 'Test your understanding with adaptive quizzes',
+        title: 'Knowledge Assessment',
+        description: 'Test your understanding with comprehensive quizzes',
         icon: <GraduationCap size={20} />,
         difficulty: 'beginner',
         estimatedTime: '15-20 min',
         prerequisites: [],
-        skills: ['Knowledge Assessment', 'Concept Validation', 'Progress Tracking'],
+        skills: ['Knowledge Assessment', 'Progress Tracking', 'Validation'],
         completionRate: 0,
         isCompleted: false,
         isUnlocked: true,
@@ -138,7 +342,7 @@ const learningPaths: LearningPath[] = [
 ];
 
 export const LearningJourneyMap: React.FC<LearningJourneyMapProps> = ({
-  currentPage = 'core-concepts',
+  currentPage = 'concepts',
   isVisible,
   onClose,
   onNavigate
@@ -221,27 +425,82 @@ export const LearningJourneyMap: React.FC<LearningJourneyMapProps> = ({
     }
   };
 
+  const getTierColor = (nodeId: string) => {
+    // Tier 1: Fundamentals
+    if (['agent-architecture', 'agent-security', 'multi-agent-systems', 'agent-ethics', 'ai-agents'].includes(nodeId)) {
+      return 'bg-blue-100 text-blue-800';
+    }
+    // Tier 2: Architecture
+    if (['a2a-communication', 'mcp', 'flow-visualization'].includes(nodeId)) {
+      return 'bg-green-100 text-green-800';
+    }
+    // Tier 3: Implementation
+    if (['acp', 'mcp-a2a-integration', 'data-visualization'].includes(nodeId)) {
+      return 'bg-yellow-100 text-yellow-800';
+    }
+    // Tier 4: Advanced
+    if (['agent-deployment', 'agent-learning', 'agent-integration'].includes(nodeId)) {
+      return 'bg-red-100 text-red-800';
+    }
+    // Other resources
+    return 'bg-gray-100 text-gray-800';
+  };
+
+  const getTierNumber = (nodeId: string) => {
+    if (['agent-architecture', 'agent-security', 'multi-agent-systems', 'agent-ethics', 'ai-agents'].includes(nodeId)) return 1;
+    if (['a2a-communication', 'mcp', 'flow-visualization'].includes(nodeId)) return 2;
+    if (['acp', 'mcp-a2a-integration', 'data-visualization'].includes(nodeId)) return 3;
+    if (['agent-deployment', 'agent-learning', 'agent-integration'].includes(nodeId)) return 4;
+    return 0; // Other resources
+  };
+
   const getNodePosition = (index: number, total: number) => {
-    // Create a more spread out layout that uses the full canvas width
-    const containerWidth = 800;
-    const containerHeight = 400;
-    const nodeRadius = 32; // Node radius for positioning
-    const padding = 80; // More padding from edges
+    // Create a much larger canvas with better spacing
+    const containerWidth = 1200;
+    const containerHeight = 800;
+    const nodeRadius = 40;
+    const padding = 100;
     
-    if (total <= 1) {
-      return { x: containerWidth / 2, y: containerHeight / 2 };
+    // Define tier groups with their nodes
+    const tiers = [
+      ['agent-architecture', 'agent-security', 'multi-agent-systems', 'agent-ethics', 'ai-agents'], // Tier 1
+      ['a2a-communication', 'mcp', 'flow-visualization'], // Tier 2
+      ['acp', 'mcp-a2a-integration', 'data-visualization'], // Tier 3
+      ['agent-deployment', 'agent-learning', 'agent-integration'], // Tier 4
+      ['azure-services', 'references', 'community', 'patterns', 'quiz'] // Additional
+    ];
+    
+    // Find which tier and position this node belongs to
+    const nodeId = selectedPath.nodes[index]?.id;
+    let tierIndex = -1;
+    let positionInTier = -1;
+    
+    for (let i = 0; i < tiers.length; i++) {
+      const pos = tiers[i].indexOf(nodeId);
+      if (pos !== -1) {
+        tierIndex = i;
+        positionInTier = pos;
+        break;
+      }
     }
     
-    // Use a flowing path that spreads horizontally across the canvas
-    const progress = index / (total - 1); // 0 to 1
-    const x = padding + progress * (containerWidth - padding * 2);
+    // Fallback to sequential layout if node not found in tiers
+    if (tierIndex === -1) {
+      tierIndex = Math.floor(index / 5);
+      positionInTier = index % 5;
+    }
     
-    // Create a more pronounced wave pattern for better spacing
-    const waveHeight = containerHeight * 0.3; // Increased wave height
-    const centerY = containerHeight / 2;
-    // Use a more complex wave pattern to avoid nodes clustering
-    const waveOffset = Math.sin(progress * Math.PI * 1.5) * waveHeight;
-    const y = Math.max(nodeRadius + 20, Math.min(containerHeight - nodeRadius - 20, centerY + waveOffset));
+    // Calculate positions with consistent tier spacing
+    const tierHeight = 140; // Fixed height between tiers
+    const tierStartY = padding + 40; // Start position for first tier
+    const tierWidth = containerWidth - padding * 2;
+    const currentTier = tiers[tierIndex] || [];
+    const nodesInTier = currentTier.length;
+    
+    // Center nodes horizontally within their tier
+    const nodeSpacing = tierWidth / (nodesInTier + 1);
+    const x = padding + (positionInTier + 1) * nodeSpacing;
+    const y = tierStartY + tierIndex * tierHeight;
     
     return { x, y };
   };
@@ -302,8 +561,8 @@ export const LearningJourneyMap: React.FC<LearningJourneyMapProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-4xl max-h-[90vh] overflow-hidden">
-        <CardHeader className="pb-4">
+      <Card className="w-full max-w-6xl max-h-[95vh] flex flex-col">
+        <CardHeader className="pb-4 flex-shrink-0">
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
@@ -337,33 +596,74 @@ export const LearningJourneyMap: React.FC<LearningJourneyMapProps> = ({
           </div>
         </CardHeader>
         
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-6 flex-1 overflow-y-auto min-h-0">
+          {/* Core Concepts Learning Tiers */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div className="text-center">
+              <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                <span className="text-sm font-semibold">1</span>
+              </div>
+              <h3 className="font-medium text-sm">Fundamentals</h3>
+              <p className="text-xs text-muted-foreground">Core concepts & basics</p>
+            </div>
+            <div className="text-center">
+              <div className="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                <span className="text-sm font-semibold">2</span>
+              </div>
+              <h3 className="font-medium text-sm">Architecture</h3>
+              <p className="text-xs text-muted-foreground">System design patterns</p>
+            </div>
+            <div className="text-center">
+              <div className="w-8 h-8 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                <span className="text-sm font-semibold">3</span>
+              </div>
+              <h3 className="font-medium text-sm">Implementation</h3>
+              <p className="text-xs text-muted-foreground">Building & integration</p>
+            </div>
+            <div className="text-center">
+              <div className="w-8 h-8 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                <span className="text-sm font-semibold">4</span>
+              </div>
+              <h3 className="font-medium text-sm">Advanced</h3>
+              <p className="text-xs text-muted-foreground">Production & mastery</p>
+            </div>
+          </div>
+
           {/* Learning Path Visualization */}
-          <div className="relative bg-gradient-to-br from-muted/20 to-muted/40 rounded-lg p-6 min-h-[500px]">
-            <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
-              {/* Draw connections between nodes */}
-              {selectedPath.nodes.map((node, index) => {
-                if (index === selectedPath.nodes.length - 1) return null;
+          <div className="relative bg-gradient-to-br from-muted/20 to-muted/40 rounded-lg p-6">
+            <div className="relative w-full h-[600px] overflow-auto">
+              <div className="relative w-[1200px] h-[800px]">
+                {/* Tier Labels - positioned based on actual tier positions */}
+                <div className="absolute left-4 top-[170px] text-sm font-semibold text-blue-600">Tier 1: Fundamentals</div>
+                <div className="absolute left-4 top-[310px] text-sm font-semibold text-green-600">Tier 2: Architecture</div>
+                <div className="absolute left-4 top-[450px] text-sm font-semibold text-yellow-600">Tier 3: Implementation</div>
+                <div className="absolute left-4 top-[590px] text-sm font-semibold text-red-600">Tier 4: Advanced</div>
+                <div className="absolute left-4 top-[730px] text-sm font-semibold text-gray-600">Additional Resources</div>
                 
-                const current = getNodePosition(index, selectedPath.nodes.length);
-                const next = getNodePosition(index + 1, selectedPath.nodes.length);
-                
-                return (
-                  <line
-                    key={`connection-${index}`}
-                    x1={current.x}
-                    y1={current.y}
-                    x2={next.x}
-                    y2={next.y}
-                    stroke={node.isCompleted ? '#22c55e' : '#cbd5e1'}
-                    strokeWidth="1.5"
-                    strokeDasharray={node.isCompleted ? '0' : '4,4'}
-                    className="transition-all duration-300"
-                    opacity={0.7}
-                  />
-                );
-              })}
-            </svg>
+                <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet">
+                {/* Draw connections between nodes */}
+                {selectedPath.nodes.map((node, index) => {
+                  if (index === selectedPath.nodes.length - 1) return null;
+                  
+                  const current = getNodePosition(index, selectedPath.nodes.length);
+                  const next = getNodePosition(index + 1, selectedPath.nodes.length);
+                  
+                  return (
+                    <line
+                      key={`connection-${index}`}
+                      x1={current.x}
+                      y1={current.y}
+                      x2={next.x}
+                      y2={next.y}
+                      stroke={node.isCompleted ? '#22c55e' : '#cbd5e1'}
+                      strokeWidth="2"
+                      strokeDasharray={node.isCompleted ? '0' : '6,6'}
+                      className="transition-all duration-300"
+                      opacity={0.6}
+                    />
+                  );
+                })}
+              </svg>
             
             {/* Learning Nodes */}
             {selectedPath.nodes.map((node, index) => {
@@ -375,18 +675,18 @@ export const LearningJourneyMap: React.FC<LearningJourneyMapProps> = ({
                 <div
                   key={node.id}
                   className={cn(
-                    "absolute w-16 h-16 rounded-full border-2 flex items-center justify-center cursor-pointer transition-all duration-200",
+                    "absolute w-20 h-20 rounded-full border-3 flex items-center justify-center cursor-pointer transition-all duration-200 shadow-lg",
                     // Remove CSS hover to prevent conflicts
                     node.isCompleted ? "bg-green-500 border-green-600 text-white" :
                     node.isUnlocked ? "bg-primary border-primary text-white" :
                     "bg-muted border-muted-foreground text-muted-foreground",
                     isCurrentPage && "ring-4 ring-primary/30",
                     // Only apply hover effects via JavaScript state
-                    isHovered && "scale-110 shadow-lg z-20"
+                    isHovered && "scale-110 shadow-xl z-20"
                   )}
                   style={{
-                    left: position.x - 32,
-                    top: position.y - 32,
+                    left: position.x - 40,
+                    top: position.y - 40,
                     zIndex: isHovered ? 20 : 10
                   }}
                   onClick={() => {
@@ -398,26 +698,35 @@ export const LearningJourneyMap: React.FC<LearningJourneyMapProps> = ({
                   onMouseLeave={handleMouseLeave}
                 >
                   {node.isCompleted ? (
-                    <CheckCircle size={24} weight="fill" />
+                    <CheckCircle size={28} weight="fill" />
                   ) : (
-                    node.icon
+                    <div className="text-2xl">{node.icon}</div>
                   )}
                   
                   {/* Node label */}
-                  <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 text-center pointer-events-none">
+                  <div className="absolute top-full mt-4 left-1/2 transform -translate-x-1/2 text-center pointer-events-none max-w-[140px]">
                     <div className={cn(
-                      "text-xs font-medium whitespace-nowrap",
+                      "text-sm font-semibold text-center leading-tight mb-1",
                       isCurrentPage ? "text-primary" : "text-foreground"
                     )}>
                       {node.title}
                     </div>
-                    <div className="text-xs text-muted-foreground">
-                      {node.estimatedTime}
+                    <div className="flex items-center justify-center gap-1 flex-wrap">
+                      {getTierNumber(node.id) > 0 && (
+                        <Badge className={cn("text-xs px-2 py-0.5", getTierColor(node.id))}>
+                          T{getTierNumber(node.id)}
+                        </Badge>
+                      )}
+                      <span className="text-xs text-muted-foreground bg-background/80 px-2 py-0.5 rounded">
+                        {node.estimatedTime}
+                      </span>
                     </div>
                   </div>
                 </div>
               );
             })}
+            </div>
+          </div>
           </div>
           
           {/* Recommendations and Details */}
