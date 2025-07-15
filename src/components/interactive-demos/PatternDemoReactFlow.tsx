@@ -12,8 +12,8 @@ import {
   CheckCircle,
   ClockClockwise, 
   Lightning, 
-  Snail,
-  Turtle, 
+  Spinner,
+  Timer, 
   Horse, 
   Rabbit 
 } from "@phosphor-icons/react";
@@ -469,7 +469,7 @@ export const PatternDemoReactFlow = memo(({ patternData, className }: PatternDem
                       onClick={() => setAnimationSpeed('slow')}
                       disabled={isRunning && animationMode === 'auto'}
                     >
-                      <Snail size={16} />
+                      <Spinner size={16} />
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -487,7 +487,7 @@ export const PatternDemoReactFlow = memo(({ patternData, className }: PatternDem
                       onClick={() => setAnimationSpeed('normal')}
                       disabled={isRunning && animationMode === 'auto'}
                     >
-                      <Turtle size={16} />
+                      <Timer size={16} />
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>

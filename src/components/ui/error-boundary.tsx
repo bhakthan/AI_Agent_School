@@ -1,5 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
-import { AlertCircle, Bug } from "@phosphor-icons/react";
+import { Warning, Bug } from "@phosphor-icons/react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 
@@ -102,7 +102,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       // Default fallback UI
       return (
         <Alert variant="destructive" className="my-4">
-          <AlertCircle className="h-5 w-5" />
+          <Warning className="h-5 w-5" />
           <AlertTitle className="ml-2">Something went wrong</AlertTitle>
           <AlertDescription className="ml-2">
             <div className="mt-2 text-sm text-muted-foreground">

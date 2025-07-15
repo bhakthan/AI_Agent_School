@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { InfoCircle, CaretDoubleRight, Warning, Code, SmileyWink, Cloud, Database, Lightning, ShieldCheck, Lightbulb, BookmarkSimple } from "@phosphor-icons/react";
+import { Info, CaretDoubleRight, Warning, Code, SmileyWink, Cloud, Database, Lightning, ShieldCheck, Lightbulb, BookmarkSimple } from "@phosphor-icons/react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { azureAIServices, azureServicePatternMappings } from "@/lib/data/azureAiServices";
@@ -128,7 +128,7 @@ const BestPractices: React.FC<BestPracticesProps> = ({ patternId, patternName })
                 </Accordion>
               ) : (
                 <div className="text-center p-6 border border-dashed rounded-lg">
-                  <InfoCircle size={32} className="mx-auto text-muted-foreground mb-2" />
+                  <Info size={32} className="mx-auto text-muted-foreground mb-2" />
                   <h3 className="text-lg font-medium">No Best Practices</h3>
                   <p className="text-muted-foreground mt-2">
                     General best practices are not defined for this pattern.
@@ -262,7 +262,7 @@ function getGeneralBestPracticesForPattern(patternId: string): PracticeItem[] {
           "focused prompts, while later steps might handle more complex integration of previous results. Adjust " +
           "model parameters (like temperature) at different steps based on whether you need creative generation " +
           "or precise formatting.",
-        icon: <InfoCircle size={18} className="text-primary" />,
+        icon: <Info size={18} className="text-primary" />,
         tags: ["design", "optimization", "performance"]
       }
     ],
@@ -273,7 +273,7 @@ function getGeneralBestPracticesForPattern(patternId: string): PracticeItem[] {
           "The aggregation method is critical in parallelization patterns. Consider whether a simple combination, " +
           "a weighted approach, or another LLM call to synthesize results is most appropriate. Design clear criteria " +
           "for resolving conflicts between parallel results.",
-        icon: <InfoCircle size={18} className="text-primary" />,
+        icon: <Info size={18} className="text-primary" />,
         tags: ["design", "integration", "decision-making"]
       },
       {
@@ -313,7 +313,7 @@ function getGeneralBestPracticesForPattern(patternId: string): PracticeItem[] {
           "Design clear, measurable evaluation criteria for the evaluator component. Use structured formats for " +
           "evaluation results to make them actionable by the optimizer. Consider implementing multiple evaluation " +
           "dimensions to capture different aspects of quality.",
-        icon: <InfoCircle size={18} className="text-primary" />,
+        icon: <Info size={18} className="text-primary" />,
         tags: ["quality", "metrics", "evaluation"]
       },
       {
@@ -333,7 +333,7 @@ function getGeneralBestPracticesForPattern(patternId: string): PracticeItem[] {
           "Design your router to provide confidence scores with classifications. Implement thresholds for when to route " +
           "directly versus when to request clarification. Consider multi-label classification for inputs that might " +
           "require handling by multiple specialists.",
-        icon: <InfoCircle size={18} className="text-primary" />,
+        icon: <Info size={18} className="text-primary" />,
         tags: ["accuracy", "decision-making", "quality"]
       },
       {
@@ -373,7 +373,7 @@ function getGeneralBestPracticesForPattern(patternId: string): PracticeItem[] {
           "Guide the self-reflection process with specific aspects to evaluate. Rather than asking for general " +
           "criticism, direct the reflection toward particular dimensions like accuracy, completeness, or reasoning " +
           "quality. This produces more actionable feedback for improvement.",
-        icon: <InfoCircle size={18} className="text-primary" />,
+        icon: <Info size={18} className="text-primary" />,
         tags: ["quality", "evaluation", "improvement"]
       },
       {
@@ -413,7 +413,7 @@ function getGeneralBestPracticesForPattern(patternId: string): PracticeItem[] {
           "Design clear criteria for how the ReAct agent selects appropriate tools. Provide explicit examples of " +
           "reasoning that leads to correct tool selection in your prompts. Consider implementing validation steps " +
           "before tool execution to prevent misuse.",
-        icon: <InfoCircle size={18} className="text-primary" />,
+        icon: <Info size={18} className="text-primary" />,
         tags: ["tools", "reasoning", "decision-making"]
       },
       {
@@ -451,7 +451,7 @@ function getGeneralBestPracticesForPattern(patternId: string): PracticeItem[] {
           "Provide a structured template for the agent's self-assessment process. Include explicit dimensions to " +
           "evaluate such as accuracy, coherence, and completeness. This structured approach makes reflection more " +
           "effective and actionable.",
-        icon: <InfoCircle size={18} className="text-primary" />,
+        icon: <Info size={18} className="text-primary" />,
         tags: ["structure", "assessment", "quality"]
       },
       {
@@ -479,7 +479,7 @@ function getGeneralBestPracticesForPattern(patternId: string): PracticeItem[] {
           "Implement effective techniques for synthesizing information from multiple retrieved documents. Design prompts " +
           "that encourage proper attribution and citation. Include mechanisms to identify and resolve contradictions " +
           "between sources.",
-        icon: <InfoCircle size={18} className="text-primary" />,
+        icon: <Info size={18} className="text-primary" />,
         tags: ["synthesis", "knowledge", "integration"]
       }
     ],
@@ -516,7 +516,7 @@ function getGeneralBestPracticesForPattern(patternId: string): PracticeItem[] {
           "Design effective coordination strategies for multi-agent systems. Implement clear role definitions and " +
           "responsibility boundaries. Consider both hierarchical and peer-to-peer coordination models based on your " +
           "specific use case.",
-        icon: <InfoCircle size={18} className="text-primary" />,
+        icon: <Info size={18} className="text-primary" />,
         tags: ["coordination", "roles", "organization"]
       }
     ]
@@ -540,7 +540,7 @@ function getServiceIcon(serviceId: string) {
     case 'azure-ai-foundry':
       return <Cloud size={18} className="text-primary" />;
     case 'azure-ai-evaluation':
-      return <InfoCircle size={18} className="text-secondary" />;
+      return <Info size={18} className="text-secondary" />;
     default:
       return <Cloud size={18} className="text-primary" />;
   }

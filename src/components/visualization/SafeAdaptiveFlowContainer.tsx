@@ -11,7 +11,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { Button } from '@/components/ui/button';
-import { Expand, ShrinkSelection } from '@phosphor-icons/react';
+import { ArrowsOut, ArrowsIn } from '@phosphor-icons/react';
 import { useTheme } from '@/components/theme/ThemeProvider';
 import { useFlowContainer } from '@/lib/hooks/useFlowContainer';
 import { 
@@ -343,7 +343,7 @@ const AdaptiveFlowContainerInner = forwardRef<
               onClick={() => optimizeViewport()}
               title="Fit View"
             >
-              <Expand size={16} />
+              <ArrowsOut size={16} />
             </Button>
             <Button 
               size="icon" 
@@ -352,7 +352,7 @@ const AdaptiveFlowContainerInner = forwardRef<
               onClick={() => resetLayout()}
               title="Reset Layout"
             >
-              <ShrinkSelection size={16} />
+              <ArrowsIn size={16} />
             </Button>
           </div>
         </Panel>

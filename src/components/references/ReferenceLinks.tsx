@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { references, ReferenceCategory } from '@/lib/data/references';
-import { ExternalLink } from '@phosphor-icons/react';
+import { ArrowSquareOut } from '@phosphor-icons/react';
 
 type ReferenceLinksProps = {
   section: 'concepts' | 'patterns' | 'azureServices';
@@ -69,7 +69,7 @@ export function ReferenceLinks({ section, itemId }: ReferenceLinksProps) {
                     className="flex items-start p-3 rounded-md hover:bg-accent/20 transition-colors group"
                   >
                     <div>
-                      <ExternalLink size={20} className="mr-2 mt-1 text-primary group-hover:text-primary/80" />
+                      <ArrowSquareOut size={20} className="mr-2 mt-1 text-primary group-hover:text-primary/80" />
                     </div>
                     <div>
                       <h3 className="font-medium text-foreground">{ref.title}</h3>

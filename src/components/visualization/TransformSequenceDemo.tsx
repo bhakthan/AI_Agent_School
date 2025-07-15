@@ -12,7 +12,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { motion } from 'framer-motion';
-import { ArrowsCounterClockwise, Play, Stop, Lightning, SlowMotion, SkipForward, Plus, Minus, GearSix } from '@phosphor-icons/react';
+import { ArrowsCounterClockwise, Play, Stop, Lightning, Gauge, SkipForward, Plus, Minus, GearSix } from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';

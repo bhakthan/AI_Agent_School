@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Play, Pause, RotateCcw, ArrowRight, ArrowDown } from '@phosphor-icons/react';
+import { Play, Pause, ArrowCounterClockwise, ArrowRight, ArrowDown } from '@phosphor-icons/react';
 import EnlightenMeButton from '../concepts/EnlightenMeButton';
 
 // Animation states for the 5-layer architecture flow
@@ -122,7 +122,7 @@ const MCPxA2AIntegrationFlow: React.FC = () => {
               {isPlaying ? 'Pause' : 'Start'} Animation
             </Button>
             <Button onClick={resetAnimation} variant="outline" size="sm">
-              <RotateCcw size={16} />
+              <ArrowCounterClockwise size={16} />
               Reset
             </Button>
           </div>

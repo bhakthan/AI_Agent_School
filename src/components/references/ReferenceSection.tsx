@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { references, ReferenceCategory, ReferenceItem } from '@/lib/data/references';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { BookmarkSimple, Link, Plus, ExternalLink } from '@phosphor-icons/react';
+import { BookmarkSimple, Link, Plus, ArrowSquareOut } from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
 import { useKV } from '@github/spark/hooks';
 import { Badge } from '@/components/ui/badge';
@@ -193,7 +193,7 @@ const ReferenceSection: React.FC<ReferenceSectionProps> = ({ type, itemId }) => 
                         key={`${reference.title}-${index}`}
                         className="flex items-start gap-3 p-3 rounded-md border border-border hover:bg-accent/5 transition-colors"
                       >
-                        <ExternalLink size={20} className="text-primary mt-1" />
+                        <ArrowSquareOut size={20} className="text-primary mt-1" />
                         <div className="flex-1">
                           <a
                             href={reference.url}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { X, Lightbulb, BookOpen, Code, Users, Sparkle, ChevronRight } from "@phosphor-icons/react";
+import { X, Lightbulb, BookOpen, Code, Users, Sparkle, CaretRight } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { PageSynopsis } from './EnhancedTutorialButton';
 
@@ -157,7 +157,7 @@ export const FloatingContextualHelp: React.FC<FloatingContextualHelpProps> = ({
                   className="h-7 px-3 text-xs"
                 >
                   {currentStep < pageSynopsis.learningCategories.length - 1 ? 'Next' : 'Complete'}
-                  <ChevronRight size={12} className="ml-1" />
+                  <CaretRight size={12} className="ml-1" />
                 </Button>
               </div>
             </div>
