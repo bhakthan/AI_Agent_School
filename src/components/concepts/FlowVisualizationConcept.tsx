@@ -2,7 +2,6 @@ import ConceptLayout from "./ConceptLayout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Graph, Eye, Code, Sparkle } from "@phosphor-icons/react"
-import CustomizableFlowDemo from "../visualization/CustomizableFlowDemo"
 import { PatternDemoSVG } from "../interactive-demos/PatternDemoSVG"
 import FlowArchitectureVisualizer from "../visualization/FlowArchitectureVisualizer"
 import AlgorithmVisualizer from "../visualization/AlgorithmVisualizer"
@@ -107,7 +106,7 @@ export default function FlowVisualizationConcept({ onMarkComplete, onNavigateToN
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <CustomizableFlowDemo />
+              <FlowArchitectureVisualizer patternData={parallelizationPattern} />
             </CardContent>
           </Card>
         </div>
@@ -410,22 +409,6 @@ const SVGFlowVisualization = ({ agentData }) => {
         />
       ))}
     </svg>
-  );
-};`}
-    }));
-
-    setNodes(flowNodes);
-    setEdges(flowEdges);
-  }, [agentData]);
-
-  return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      fitView
-    />
   );
 };`}
               </pre>
