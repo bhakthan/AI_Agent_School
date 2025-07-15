@@ -15,12 +15,16 @@ import DataVisualizationConcept from "./DataVisualizationConcept"
 import AgentArchitectureConcept from "./AgentArchitectureConcept"
 import AgentSecurityConcept from "./AgentSecurityConcept"
 import MultiAgentSystemsConcept from "./MultiAgentSystemsConcept"
+import AgentDeploymentConcept from "./AgentDeploymentConcept"
+import AgentEthicsConcept from "./AgentEthicsConcept"
+import AgentLearningConcept from "./AgentLearningConcept"
+import AgentIntegrationConcept from "./AgentIntegrationConcept"
 
 interface ConceptInfo {
   id: string
   title: string
   description: string
-  level: 'foundation' | 'intermediate' | 'advanced'
+  level: 'fundamentals' | 'architecture' | 'implementation' | 'advanced'
   icon: React.ReactNode
   color: string
   estimatedTime: string
@@ -34,7 +38,7 @@ const concepts: ConceptInfo[] = [
     id: 'agent-architecture',
     title: 'Agent Architecture & Lifecycle',
     description: 'Understanding the fundamental building blocks and lifecycle of AI agents',
-    level: 'foundation',
+    level: 'fundamentals',
     icon: <Brain className="w-6 h-6" />,
     color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400',
     estimatedTime: '25-35 min',
@@ -45,7 +49,7 @@ const concepts: ConceptInfo[] = [
     id: 'agent-security',
     title: 'Agent Security & Trust',
     description: 'Security mechanisms and trust models for AI agent systems',
-    level: 'foundation',
+    level: 'fundamentals',
     icon: <Shield className="w-6 h-6" />,
     color: 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400',
     estimatedTime: '30-40 min',
@@ -56,7 +60,7 @@ const concepts: ConceptInfo[] = [
     id: 'multi-agent-systems',
     title: 'Multi-Agent Systems',
     description: 'Coordination, collaboration, and emergent behavior in multi-agent systems',
-    level: 'foundation',
+    level: 'fundamentals',
     icon: <Users className="w-6 h-6" />,
     color: 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400',
     estimatedTime: '35-45 min',
@@ -64,22 +68,33 @@ const concepts: ConceptInfo[] = [
     component: MultiAgentSystemsConcept
   },
   {
+    id: 'agent-ethics',
+    title: 'Agent Ethics & Governance',
+    description: 'Ethical principles, bias mitigation, and regulatory compliance for AI agents',
+    level: 'fundamentals',
+    icon: <Shield className="w-6 h-6" />,
+    color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400',
+    estimatedTime: '35-45 min',
+    prerequisites: ['agent-architecture'],
+    component: AgentEthicsConcept
+  },
+  {
     id: 'ai-agents',
     title: 'AI Agents',
     description: 'Learn about autonomous AI systems that can perceive, decide, and act',
-    level: 'foundation',
+    level: 'fundamentals',
     icon: <Brain className="w-6 h-6" />,
     color: 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400',
     estimatedTime: '20-30 min',
     prerequisites: [],
     component: AIAgentsConcept
   },
-  // Tier 2: Intermediate Concepts
+  // Tier 2: Architecture Concepts
   {
     id: 'a2a-communication',
     title: 'A2A Communication',
     description: 'How AI agents communicate and coordinate with each other',
-    level: 'intermediate',
+    level: 'architecture',
     icon: <ArrowsHorizontal className="w-6 h-6" />,
     color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400',
     estimatedTime: '25-35 min',
@@ -90,7 +105,7 @@ const concepts: ConceptInfo[] = [
     id: 'mcp',
     title: 'Model Context Protocol',
     description: 'Secure tool integration protocol for AI agents',
-    level: 'intermediate',
+    level: 'architecture',
     icon: <Shield className="w-6 h-6" />,
     color: 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400',
     estimatedTime: '30-40 min',
@@ -101,19 +116,19 @@ const concepts: ConceptInfo[] = [
     id: 'flow-visualization',
     title: 'Flow Visualization',
     description: 'Interactive visualization of agent flows and interactions',
-    level: 'intermediate',
+    level: 'architecture',
     icon: <Graph className="w-6 h-6" />,
     color: 'bg-teal-100 text-teal-800 dark:bg-teal-900/20 dark:text-teal-400',
     estimatedTime: '30-40 min',
     prerequisites: ['a2a-communication'],
     component: FlowVisualizationConcept
   },
-  // Tier 3: Advanced Concepts
+  // Tier 3: Implementation Concepts
   {
     id: 'acp',
     title: 'Agent Communication Protocol',
     description: 'Advanced protocols for enterprise-scale agent coordination',
-    level: 'advanced',
+    level: 'implementation',
     icon: <Stack className="w-6 h-6" />,
     color: 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400',
     estimatedTime: '35-45 min',
@@ -124,7 +139,7 @@ const concepts: ConceptInfo[] = [
     id: 'mcp-a2a-integration',
     title: 'MCP x A2A Integration',
     description: 'Integrate Model Context Protocol with Agent-to-Agent communication',
-    level: 'advanced',
+    level: 'implementation',
     icon: <LinkSimple className="w-6 h-6" />,
     color: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900/20 dark:text-cyan-400',
     estimatedTime: '40-50 min',
@@ -135,12 +150,46 @@ const concepts: ConceptInfo[] = [
     id: 'data-visualization',
     title: 'Data Visualization',
     description: 'Advanced data visualization techniques for AI agent systems',
-    level: 'advanced',
+    level: 'implementation',
     icon: <ChartBar className="w-6 h-6" />,
     color: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/20 dark:text-indigo-400',
     estimatedTime: '35-45 min',
     prerequisites: ['flow-visualization'],
     component: DataVisualizationConcept
+  },
+  // Tier 4: Advanced Concepts
+  {
+    id: 'agent-deployment',
+    title: 'Agent Deployment & Operations',
+    description: 'Containerization, monitoring, scaling, and DevOps for AI agents',
+    level: 'advanced',
+    icon: <Lock className="w-6 h-6" />,
+    color: 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400',
+    estimatedTime: '40-50 min',
+    prerequisites: ['acp'],
+    component: AgentDeploymentConcept
+  },
+  {
+    id: 'agent-learning',
+    title: 'Agent Learning & Adaptation',
+    description: 'Reinforcement learning, online learning, transfer learning, and meta-learning',
+    level: 'advanced',
+    icon: <Brain className="w-6 h-6" />,
+    color: 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400',
+    estimatedTime: '45-55 min',
+    prerequisites: ['ai-agents'],
+    component: AgentLearningConcept
+  },
+  {
+    id: 'agent-integration',
+    title: 'Agent Integration Patterns',
+    description: 'API integration, event-driven architecture, microservices, and legacy systems',
+    level: 'advanced',
+    icon: <LinkSimple className="w-6 h-6" />,
+    color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400',
+    estimatedTime: '40-50 min',
+    prerequisites: ['mcp-a2a-integration'],
+    component: AgentIntegrationConcept
   }
 ]
 
