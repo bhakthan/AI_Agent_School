@@ -126,7 +126,7 @@ export function PatternSidebar({ activePatternId, onPatternSelect }: PatternSide
             ? "-translate-x-full opacity-0 pointer-events-none" 
             : "translate-x-0 opacity-100"
         )}
-        style={{ width: '250px', maxHeight: 'calc(100vh - 150px)' }}
+        style={{ width: '250px', height: 'calc(100vh - 142px)' }}
       >
         <div className="flex flex-col h-full">
           {/* Header */}
@@ -178,72 +178,73 @@ export function PatternSidebar({ activePatternId, onPatternSelect }: PatternSide
               </div>
             </div>
           </div>
-          
-          {/* Pattern List */}
-          <ScrollArea className="flex-1 overflow-y-auto p-2">
-            {Object.entries(filteredCategories).length > 0 ? (
-              Object.entries(filteredCategories).map(([categoryName, patterns]) => (
-                <div key={categoryName} className="mb-4">
-                  <div className="flex items-center gap-2 px-2 py-1 text-sm font-medium text-muted-foreground">
-                    {getCategoryIcon(categoryName)}
-                    <span>{categoryName}</span>
-                  </div>
-                  <div className="mt-1 space-y-1">
-                    {patterns.map(pattern => (
-                      <TooltipProvider key={pattern.id}>
-                        <Tooltip delayDuration={300}>
-                          <TooltipTrigger asChild>
-                            <div 
-                              className={cn(
-                                "px-2 py-1.5 rounded-md cursor-pointer transition-all duration-150 text-sm relative group hover:pr-10",
-                                activePatternId === pattern.id 
-                                  ? "bg-primary/10 text-primary border-l-2 border-primary" 
-                                  : "hover:bg-muted"
-                              )}
-                              onClick={() => onPatternSelect(pattern.id)}
-                            >
-                              <span className="block truncate">{pattern.name}</span>
-                              {/* EnlightenMeButton with improved hover area and alignment */}
+           {/* Pattern List */}
+          <ScrollArea className="flex-1 pr-2">
+            <div className="space-y-2 p-2">
+              {Object.entries(filteredCategories).length > 0 ? (
+                Object.entries(filteredCategories).map(([categoryName, patterns]) => (
+                  <div key={categoryName} className="mb-4">
+                    <div className="flex items-center gap-2 px-2 py-1 text-sm font-medium text-muted-foreground">
+                      {getCategoryIcon(categoryName)}
+                      <span>{categoryName}</span>
+                    </div>
+                    <div className="mt-1 space-y-1">
+                      {patterns.map(pattern => (
+                        <TooltipProvider key={pattern.id}>
+                          <Tooltip delayDuration={300}>
+                            <TooltipTrigger asChild>
                               <div 
-                                className="absolute right-1 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:opacity-100 z-10 transform translate-x-2 group-hover:translate-x-0"
-                                onClick={(e) => e.stopPropagation()}
-                                onMouseEnter={(e) => e.stopPropagation()}
+                                className={cn(
+                                  "px-2 py-1.5 rounded-md cursor-pointer transition-all duration-150 text-sm relative group hover:pr-10",
+                                  activePatternId === pattern.id 
+                                    ? "bg-primary/10 text-primary border-l-2 border-primary" 
+                                    : "hover:bg-muted"
+                                )}
+                                onClick={() => onPatternSelect(pattern.id)}
                               >
-                                <div className="p-1 rounded-full hover:bg-yellow-100/80 dark:hover:bg-yellow-900/30 transition-colors duration-150 shadow-sm">
-                                  <EnlightenMeButton 
-                                    title={`${pattern.name} Agent Pattern`}
-                                    conceptId={pattern.id}
-                                    description={`The ${pattern.name} agent pattern: ${pattern.description}`}
-                                    variant="inline"
-                                    size="sm"
-                                    customPrompt={`Explain the ${pattern.name} agent pattern in comprehensive detail. Cover: 1) What this pattern is and when to use it in Azure AI environments, including specific scenarios where it outperforms other patterns, 2) Detailed architecture and implementation using Azure OpenAI Service, Azure AI Agent Service, and relevant Azure AI SDK components, 3) Step-by-step implementation guide with Azure-specific code examples, authentication, and best practices, 4) Real-world use cases and success stories, particularly in enterprise Azure environments, 5) Performance considerations, cost optimization, and scaling strategies on Azure infrastructure, 6) Integration patterns with other Azure services like Azure AI Search, Azure Cognitive Services, and Azure Functions, 7) Monitoring, debugging, and observability using Azure Application Insights and Azure Monitor, 8) Security best practices including Azure Key Vault integration, Azure Active Directory authentication, and compliance considerations, 9) Common pitfalls and troubleshooting guidance specific to Azure deployments, 10) Comparison with related patterns and guidance on when to choose this pattern over alternatives.`}
-                                  />
+                                <span className="block truncate">{pattern.name}</span>
+                                {/* EnlightenMeButton with improved hover area and alignment */}
+                                <div 
+                                  className="absolute right-1 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:opacity-100 z-10 transform translate-x-2 group-hover:translate-x-0"
+                                  onClick={(e) => e.stopPropagation()}
+                                  onMouseEnter={(e) => e.stopPropagation()}
+                                >
+                                  <div className="p-1 rounded-full hover:bg-yellow-100/80 dark:hover:bg-yellow-900/30 transition-colors duration-150 shadow-sm">
+                                    <EnlightenMeButton 
+                                      title={`${pattern.name} Agent Pattern`}
+                                      conceptId={pattern.id}
+                                      description={`The ${pattern.name} agent pattern: ${pattern.description}`}
+                                      variant="inline"
+                                      size="sm"
+                                      customPrompt={`Explain the ${pattern.name} agent pattern in comprehensive detail. Cover: 1) What this pattern is and when to use it in Azure AI environments, including specific scenarios where it outperforms other patterns, 2) Detailed architecture and implementation using Azure OpenAI Service, Azure AI Agent Service, and relevant Azure AI SDK components, 3) Step-by-step implementation guide with Azure-specific code examples, authentication, and best practices, 4) Real-world use cases and success stories, particularly in enterprise Azure environments, 5) Performance considerations, cost optimization, and scaling strategies on Azure infrastructure, 6) Integration patterns with other Azure services like Azure AI Search, Azure Cognitive Services, and Azure Functions, 7) Monitoring, debugging, and observability using Azure Application Insights and Azure Monitor, 8) Security best practices including Azure Key Vault integration, Azure Active Directory authentication, and compliance considerations, 9) Common pitfalls and troubleshooting guidance specific to Azure deployments, 10) Comparison with related patterns and guidance on when to choose this pattern over alternatives.`}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </TooltipTrigger>
-                          <TooltipContent side="right" className="max-w-xs text-sm">
-                            {pattern.description}
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    ))}
+                            </TooltipTrigger>
+                            <TooltipContent side="right" className="max-w-xs text-sm">
+                              {pattern.description}
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      ))}
+                    </div>
                   </div>
+                ))
+              ) : (
+                <div className="px-4 py-8 text-center text-muted-foreground">
+                  <p>No patterns found</p>
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="mt-2"
+                    onClick={() => setSearchQuery('')}
+                  >
+                    Clear search
+                  </Button>
                 </div>
-              ))
-            ) : (
-              <div className="px-4 py-8 text-center text-muted-foreground">
-                <p>No patterns found</p>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="mt-2"
-                  onClick={() => setSearchQuery('')}
-                >
-                  Clear search
-                </Button>
-              </div>
-            )}
+              )}
+            </div>
           </ScrollArea>
         </div>
       </div>
