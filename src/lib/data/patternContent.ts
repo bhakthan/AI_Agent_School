@@ -254,7 +254,7 @@ export const patternContents: PatternContent[] = [
     relatedPatterns: ["Model Context Protocol", "ReAct Agent", "Agentic RAG"]
   },
   {
-    id: 'model-context-protocol',
+    id: 'mcp',
     name: 'Model Context Protocol (MCP)',
     longDescription: `
       The Model Context Protocol (MCP) is a standardized communication framework that defines how AI models interact with context systems. 
@@ -672,13 +672,7 @@ export const patternContents: PatternContent[] = [
       The Plan and Execute pattern divides problem-solving into two distinct phases: first creating a structured plan,
       then systematically executing each step. The planning phase breaks down complex tasks into ordered, manageable
       subtasks, potentially with dependencies and contingencies. The execution phase then works through these subtasks,
-      potentially adapting the plan based on intermediate results.
-      
-      This pattern enables more effective handling of complex, multi-step tasks by making the planning process explicit
-      rather than implicit. The generated plan serves as a roadmap that guides execution and can be reviewed before
-      proceeding.
-      
-      The pattern can include replanning steps where the original plan is revised based on new information discovered
+      potentially adapting the plan based on new information discovered
       during execution. This allows for adaptation while maintaining an overall strategic approach.
     `,
     advantages: [
@@ -764,8 +758,8 @@ export const patternContents: PatternContent[] = [
     relatedPatterns: ["Autonomous Workflow", "Plan and Execute", "ReAct Agent"]
   },
   {
-    id: 'deep-researcher-agent',
-    name: 'Deep Researcher Agent',
+    id: 'deep-researcher',
+    name: 'Deep Researcher',
     longDescription: `
       The Deep Researcher pattern extends basic RAG capabilities into an advanced research assistant that can conduct 
       comprehensive investigations on complex topics. Unlike simpler information retrieval systems, Deep Researcher 
@@ -858,5 +852,103 @@ export const patternContents: PatternContent[] = [
       "Include personalization capabilities for different user speech patterns"
     ],
     relatedPatterns: ["ReAct Agent", "Autonomous Workflow", "Model Context Protocol"]
+  },
+  {
+    id: 'agent-evaluation',
+    name: 'Agent Evaluation',
+    longDescription: `
+      Agent Evaluation is a comprehensive framework for assessing AI agent performance, capabilities, and behavior patterns. 
+      This pattern provides systematic approaches to measure agent effectiveness across multiple dimensions including accuracy, 
+      efficiency, robustness, and alignment with intended goals.
+      
+      The evaluation process involves multiple assessment techniques: performance benchmarking against standardized tasks, 
+      capability testing to verify specific functionalities, behavioral analysis to understand decision-making patterns, 
+      and stress testing to evaluate robustness under various conditions. This pattern also includes continuous monitoring 
+      and improvement mechanisms.
+      
+      Advanced Agent Evaluation systems incorporate both quantitative metrics (response times, accuracy rates, resource usage) 
+      and qualitative assessments (reasoning quality, explanation clarity, ethical behavior). The framework supports 
+      comparative analysis between different agents, version testing for updates, and real-time monitoring in production 
+      environments.
+    `,
+    advantages: [
+      "Provides objective assessment of agent performance and capabilities",
+      "Enables systematic comparison between different agent implementations",
+      "Supports continuous improvement through detailed feedback mechanisms",
+      "Helps identify potential issues before deployment in production",
+      "Facilitates compliance with quality standards and regulations"
+    ],
+    limitations: [
+      "Requires significant effort to design comprehensive evaluation frameworks",
+      "May not capture all aspects of agent behavior in real-world scenarios",
+      "Evaluation metrics may not always align with actual user satisfaction",
+      "Can be time-consuming and resource-intensive for complex agents",
+      "Difficulty in creating universal evaluation standards across different domains"
+    ],
+    realWorldApplications: [
+      "Quality assurance testing for conversational AI systems",
+      "Performance monitoring of autonomous agents in production",
+      "Comparative analysis of different AI agent implementations",
+      "Certification and compliance verification for regulated industries",
+      "Continuous improvement programs for agent development teams"
+    ],
+    bestPractices: [
+      "Design evaluation metrics that align with actual business objectives",
+      "Implement both automated testing and human evaluation components",
+      "Create diverse test scenarios that cover edge cases and failure modes",
+      "Establish baseline performance metrics for comparative analysis",
+      "Integrate evaluation processes into the development lifecycle",
+      "Maintain transparency in evaluation criteria and methodology"
+    ],
+    relatedPatterns: ["Evaluator Optimizer", "Self-Reflection", "Autonomous Workflow"]
+  },
+  {
+    id: 'computer-use',
+    name: 'Computer Use',
+    longDescription: `
+      Computer Use agents are sophisticated systems that can interact with graphical user interfaces through screen capture, 
+      mouse movements, keyboard input, and visual recognition. This pattern enables agents to operate desktop applications, 
+      web browsers, and other software just like human users would.
+      
+      The pattern involves several key components: screen capture for understanding the current interface state, computer 
+      vision for identifying UI elements, action planning for determining the sequence of interactions needed, and precise 
+      execution of mouse clicks, keyboard input, and navigation commands. These agents can adapt to different screen 
+      resolutions, operating systems, and application layouts.
+      
+      Advanced Computer Use agents incorporate learning mechanisms to improve their interaction strategies over time, 
+      error recovery systems to handle unexpected UI changes, and safety mechanisms to prevent unintended actions. 
+      They can also coordinate with other agents or systems to complete complex multi-step workflows that span 
+      multiple applications.
+    `,
+    advantages: [
+      "Can interact with any application that has a graphical user interface",
+      "Enables automation of legacy systems without API access",
+      "Provides flexibility to work with constantly changing web interfaces",
+      "Can perform complex multi-step workflows across different applications",
+      "Mimics human-like interaction patterns for better compatibility"
+    ],
+    limitations: [
+      "Slower than direct API integrations due to visual processing requirements",
+      "Vulnerable to UI changes and layout modifications",
+      "May struggle with complex or dynamic interface elements",
+      "Requires significant computational resources for real-time vision processing",
+      "Can be unreliable in environments with varying screen resolutions or themes"
+    ],
+    realWorldApplications: [
+      "Automated software testing and quality assurance",
+      "RPA (Robotic Process Automation) for business processes",
+      "Web scraping and data extraction from complex sites",
+      "Desktop application automation for productivity workflows",
+      "Accessibility tools for users with disabilities"
+    ],
+    bestPractices: [
+      "Implement robust error handling and recovery mechanisms",
+      "Use multiple identification strategies for UI elements (coordinates, text, images)",
+      "Design agents to be resilient to minor UI changes and variations",
+      "Implement safety checks to prevent accidental data loss or system damage",
+      "Optimize performance by caching frequently accessed UI patterns",
+      "Create comprehensive logging for debugging and improvement purposes"
+    ],
+    relatedPatterns: ["Modern Tool Use", "Autonomous Workflow", "ReAct Agent"]
   }
 ];
