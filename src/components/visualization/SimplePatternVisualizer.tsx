@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Play, ArrowsClockwise, Info, CaretDown, CaretUp, FastForward, Rewind, DotsSixVertical } from "@phosphor-icons/react";
-import { PatternData } from '@/lib/data/patterns';
+import { PatternData } from '@/lib/data/patterns/index';
 import { patternContents } from '@/lib/data/patternContent';
 import { useTheme } from '@/components/theme/ThemeProvider';
 

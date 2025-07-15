@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Check, Code, Play, ListChecks, FileCode, FlowArrow, Graph, Bug, ShieldCheck } from "@phosphor-icons/react"
 import { Steps } from './Steps'
-import { PatternData } from '@/lib/data/patterns'
+import { PatternData } from '@/lib/data/patterns/index'
 import SimplePatternFlow from '../interactive-demos/SimplePatternFlow'
 import BestPractices from './BestPractices'
 import PatternSecurityControls from './PatternSecurityControls'

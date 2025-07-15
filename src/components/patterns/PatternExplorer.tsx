@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { agentPatterns } from '@/lib/data/patterns'
+import { agentPatterns } from '@/lib/data/patterns/index'
 import SimplePatternVisualizer from '@/components/visualization/SimplePatternVisualizer'
 import CodePlaybook from '@/components/code-playbook/CodePlaybook'
 import PatternDetails from './PatternDetails'

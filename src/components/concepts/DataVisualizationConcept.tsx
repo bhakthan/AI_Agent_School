@@ -106,9 +106,62 @@ export default function DataVisualizationConcept({ onMarkComplete, onNavigateToN
             </CardHeader>
             <CardContent>
               <EnhancedDataFlowVisualizer
-                flows={[]}
-                edges={[]}
-                nodes={[]}
+                flows={[
+                  {
+                    id: 'flow-1',
+                    edgeId: 'edge-1',
+                    source: 'user',
+                    target: 'agent',
+                    type: 'query',
+                    content: 'User query',
+                    timestamp: Date.now(),
+                    progress: 0
+                  },
+                  {
+                    id: 'flow-2',
+                    edgeId: 'edge-2',
+                    source: 'agent',
+                    target: 'database',
+                    type: 'query',
+                    content: 'Data retrieval',
+                    timestamp: Date.now() + 1000,
+                    progress: 0
+                  }
+                ]}
+                edges={[
+                  {
+                    id: 'edge-1',
+                    source: 'user',
+                    target: 'agent',
+                    type: 'default'
+                  },
+                  {
+                    id: 'edge-2',
+                    source: 'agent',
+                    target: 'database',
+                    type: 'default'
+                  }
+                ]}
+                nodes={[
+                  {
+                    id: 'user',
+                    type: 'input',
+                    data: { label: 'User', nodeType: 'input' },
+                    position: { x: 100, y: 200 }
+                  },
+                  {
+                    id: 'agent',
+                    type: 'default',
+                    data: { label: 'Agent', nodeType: 'llm' },
+                    position: { x: 300, y: 200 }
+                  },
+                  {
+                    id: 'database',
+                    type: 'output',
+                    data: { label: 'Database', nodeType: 'output' },
+                    position: { x: 500, y: 200 }
+                  }
+                ]}
                 visualizationMode="detailed"
                 speed={1}
               />
@@ -124,7 +177,30 @@ export default function DataVisualizationConcept({ onMarkComplete, onNavigateToN
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <DataTransformVisualizer />
+              <DataTransformVisualizer 
+                flows={[
+                  {
+                    id: 'transform-1',
+                    edgeId: 'edge-1',
+                    source: 'input',
+                    target: 'processor',
+                    type: 'data',
+                    content: 'Raw data',
+                    timestamp: Date.now(),
+                    progress: 0,
+                    transformStage: 'raw',
+                    transformationProgress: 0
+                  }
+                ]}
+                edges={[
+                  {
+                    id: 'edge-1',
+                    source: 'input',
+                    target: 'processor',
+                    type: 'default'
+                  }
+                ]}
+              />
             </CardContent>
           </Card>
 

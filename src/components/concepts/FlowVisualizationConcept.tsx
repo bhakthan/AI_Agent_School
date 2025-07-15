@@ -6,7 +6,7 @@ import CustomizableFlowDemo from "../visualization/CustomizableFlowDemo"
 import PatternDemoReactFlow from "../interactive-demos/PatternDemoReactFlow"
 import AlgorithmVisualizer from "../visualization/AlgorithmVisualizer"
 import ComparisonTimelineVisualizer from "../visualization/ComparisonTimelineVisualizer"
-import { parallelizationPattern, chainOfThoughtPattern } from "@/lib/data/patterns"
+import { parallelizationPattern, promptChainingPattern as chainOfThoughtPattern } from "@/lib/data/patterns/index"
 
 interface FlowVisualizationConceptProps {
   onMarkComplete?: () => void

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Play, ArrowsClockwise, Pause, FastForward, Rewind } from "@phosphor-icons/react";
-import { PatternData } from '@/lib/data/patterns';
+import { PatternData } from '@/lib/data/patterns/index';
 import { useTheme } from '@/components/theme/ThemeProvider';
 
 interface SimplePatternFlowProps {

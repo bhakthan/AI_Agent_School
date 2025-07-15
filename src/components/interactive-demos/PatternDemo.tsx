@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
-import { PatternData } from '@/lib/data/patterns';
+import { PatternData } from '@/lib/data/patterns/index';
 import { Play, ArrowsClockwise, CheckCircle, Clock, WarningCircle, ArrowBendDownRight } from "@phosphor-icons/react";
 import { useTheme } from '@/components/theme/ThemeProvider';
 import StandardFlowVisualizerWithProvider from '../visualization/StandardFlowVisualizer';

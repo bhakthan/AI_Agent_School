@@ -17,7 +17,7 @@ export const agentEvaluationPattern: PatternData = {
     {
       id: 'test-coordinator',
       type: 'default',
-      data: { label: 'Test Coordinator', nodeType: 'coordinator' },
+      data: { label: 'Test Coordinator', nodeType: 'aggregator' },
       position: { x: 300, y: 300 }
     },
     {
@@ -29,7 +29,7 @@ export const agentEvaluationPattern: PatternData = {
     {
       id: 'performance-monitor',
       type: 'default',
-      data: { label: 'Performance Monitor', nodeType: 'monitor' },
+      data: { label: 'Performance Monitor', nodeType: 'tool' },
       position: { x: 500, y: 250 }
     },
     {

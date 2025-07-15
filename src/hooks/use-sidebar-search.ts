@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from 'react';
-import { agentPatterns } from '@/lib/data/patterns';
+import { agentPatterns } from '@/lib/data/patterns/index';
 
 interface PatternData {
   id: string;

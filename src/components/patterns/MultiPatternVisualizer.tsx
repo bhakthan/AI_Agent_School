@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
 import { ArrowsCounterClockwise, Play, Stop, ArrowsHorizontal, ChartLine, Table } from '@phosphor-icons/react'
-import { PatternData, agentPatterns } from '@/lib/data/patterns'
+import { PatternData, agentPatterns } from '@/lib/data/patterns/index'
 import SimplePatternVisualizer from '@/components/visualization/SimplePatternVisualizer'
 import SimpleMultiPatternVisualizer from '@/components/visualization/SimpleMultiPatternVisualizer'
 import ComparisonTimelineVisualizer from '@/components/visualization/ComparisonTimelineVisualizer'

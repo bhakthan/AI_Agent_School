@@ -9,7 +9,7 @@ import ReactFlow, {
   ReactFlowInstance,
 } from 'reactflow'
 import 'reactflow/dist/style.css'
-import { PatternData } from '@/lib/data/patterns'
+import { PatternData } from '@/lib/data/patterns/index'
 import { patternContents } from '@/lib/data/patternContent'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'

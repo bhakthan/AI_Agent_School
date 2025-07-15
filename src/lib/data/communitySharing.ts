@@ -1,4 +1,4 @@
-import { PatternType } from "./patterns";
+import { PatternType } from "./patterns/index";
 
 // Mock environment variables for browser environment
 const mockEnv = {

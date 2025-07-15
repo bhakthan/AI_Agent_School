@@ -15,7 +15,7 @@ import {
   ClockCounterClockwise,
   ThumbsUp
 } from '@phosphor-icons/react';
-import { PatternType } from '@/lib/data/patterns';
+import { PatternType } from '@/lib/data/patterns/index';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useKV } from '@github/spark/hooks';
 import { toast } from 'sonner';

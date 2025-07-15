@@ -14,7 +14,7 @@ import {
   useSidebar
 } from "@/components/ui/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { agentPatterns } from '@/lib/data/patterns';
+import { agentPatterns } from '@/lib/data/patterns/index';
 import { BookmarkSimple, CaretRight, GraduationCap, Keyboard, Lightbulb, MagnifyingGlass, Robot, X } from '@phosphor-icons/react';
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";

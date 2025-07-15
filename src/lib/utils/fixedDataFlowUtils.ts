@@ -1,5 +1,5 @@
 import { Node, Edge } from 'reactflow';
-import { PatternData } from '../data/patterns';
+import { PatternData } from '../data/patterns/index';
 
 // The speed at which flow animations happen
 export type FlowSpeed = 'slow' | 'normal' | 'fast';

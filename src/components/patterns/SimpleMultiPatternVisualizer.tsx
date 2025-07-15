@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { ArrowsCounterClockwise, Play, ArrowsHorizontal, ChartLine, Table, Plus, X } from '@phosphor-icons/react';
-import { PatternData, agentPatterns } from '@/lib/data/patterns';
+import { PatternData, agentPatterns } from '@/lib/data/patterns/index';
 import { useTheme } from '@/components/theme/ThemeProvider';
 import EnlightenMeButton from '../concepts/EnlightenMeButton';
 

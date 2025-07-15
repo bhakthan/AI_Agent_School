@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Play, ArrowsClockwise, DotsSixVertical } from "@phosphor-icons/react";
-import { agentPatterns } from '@/lib/data/patterns';
+import { agentPatterns } from '@/lib/data/patterns/index';
 import { useTheme } from '@/components/theme/ThemeProvider';
 
 interface SimpleMultiPatternVisualizerProps {

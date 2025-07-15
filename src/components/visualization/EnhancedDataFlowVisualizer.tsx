@@ -43,19 +43,20 @@ const EnhancedDataFlowVisualizer = ({
 
   // Apply filters to the flows
   const filteredFlows = useMemo(() => {
+    if (!flows || flows.length === 0) return [];
     if (!filter) return flows;
     
     return flows.filter(flow => {
       // Filter by message type
-      if (filter.messageTypes.length > 0 && !filter.messageTypes.includes(flow.type)) {
+      if (filter.messageTypes?.length > 0 && !filter.messageTypes.includes(flow.type)) {
         return false;
       }
       
       // Filter by node type (source and target)
-      const sourceNode = nodes.find(n => n.id === flow.source);
-      const targetNode = nodes.find(n => n.id === flow.target);
+      const sourceNode = nodes?.find(n => n.id === flow.source);
+      const targetNode = nodes?.find(n => n.id === flow.target);
       
-      if (filter.nodeTypes.length > 0) {
+      if (filter.nodeTypes?.length > 0) {
         const sourceNodeType = sourceNode?.data?.nodeType;
         const targetNodeType = targetNode?.data?.nodeType;
         
@@ -69,7 +70,7 @@ const EnhancedDataFlowVisualizer = ({
       }
       
       // Filter by selected connections
-      if (filter.connections.length > 0) {
+      if (filter.connections?.length > 0) {
         const matchesConnection = filter.connections.some(
           conn => conn.source === flow.source && conn.target === flow.target
         );
@@ -399,7 +400,10 @@ const EnhancedDataFlowVisualizer = ({
 
 export default memo(EnhancedDataFlowVisualizer, (prevProps, nextProps) => {
   // Skip re-render if flows array length hasn't changed and other key props remain the same
-  if (prevProps.flows.length !== nextProps.flows.length) return false;
+  const prevFlowsLength = prevProps.flows?.length || 0;
+  const nextFlowsLength = nextProps.flows?.length || 0;
+  
+  if (prevFlowsLength !== nextFlowsLength) return false;
   if (prevProps.visualizationMode !== nextProps.visualizationMode) return false;
   if (prevProps.speed !== nextProps.speed) return false;
   
@@ -407,8 +411,8 @@ export default memo(EnhancedDataFlowVisualizer, (prevProps, nextProps) => {
   if (prevProps.filter !== nextProps.filter) {
     // Deep compare important filter properties
     if (prevProps.filter && nextProps.filter) {
-      if (prevProps.filter.messageTypes.length !== nextProps.filter.messageTypes.length) return false;
-      if (prevProps.filter.nodeTypes.length !== nextProps.filter.nodeTypes.length) return false;
+      if (prevProps.filter.messageTypes?.length !== nextProps.filter.messageTypes?.length) return false;
+      if (prevProps.filter.nodeTypes?.length !== nextProps.filter.nodeTypes?.length) return false;
       if (prevProps.filter.visualizationMode !== nextProps.filter.visualizationMode) return false;
       if (prevProps.filter.highlightPattern !== nextProps.filter.highlightPattern) return false;
     } else {

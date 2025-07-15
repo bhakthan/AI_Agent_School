@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Plus, X, Check, Upload } from '@phosphor-icons/react';
 import { CommunityPattern } from '@/lib/data/communitySharing';
-import { PatternType } from '@/lib/data/patterns';
+import { PatternType } from '@/lib/data/patterns/index';
 
 interface CommunityPatternFormProps {
   onSubmit: (pattern: Omit<CommunityPattern, 'id' | 'votes' | 'createdAt'>) => void;
