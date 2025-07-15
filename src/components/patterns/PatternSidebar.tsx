@@ -13,7 +13,6 @@ import {
   SidebarInput,
   useSidebar
 } from "@/components/ui/sidebar";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { agentPatterns } from '@/lib/data/patterns/index';
 import { BookmarkSimple, CaretRight, GraduationCap, Keyboard, Lightbulb, MagnifyingGlass, Robot, X } from '@phosphor-icons/react';
 import { Separator } from "@/components/ui/separator";
@@ -178,11 +177,13 @@ export function PatternSidebar({ activePatternId, onPatternSelect }: PatternSide
               </div>
             </div>
           </div>
-           {/* Pattern List */}
-          <ScrollArea className="flex-1 pr-2">
-            <div className="space-y-2 p-2">
-              {Object.entries(filteredCategories).length > 0 ? (
-                Object.entries(filteredCategories).map(([categoryName, patterns]) => (
+          
+          {/* Pattern List */}
+          <div className="flex-1 min-h-0 overflow-hidden">
+            <div className="h-full overflow-y-auto overflow-x-hidden p-2">
+              <div className="space-y-2">
+                {Object.entries(filteredCategories).length > 0 ? (
+                  Object.entries(filteredCategories).map(([categoryName, patterns]) => (
                   <div key={categoryName} className="mb-4">
                     <div className="flex items-center gap-2 px-2 py-1 text-sm font-medium text-muted-foreground">
                       {getCategoryIcon(categoryName)}
@@ -244,8 +245,9 @@ export function PatternSidebar({ activePatternId, onPatternSelect }: PatternSide
                   </Button>
                 </div>
               )}
+              </div>
             </div>
-          </ScrollArea>
+          </div>
         </div>
       </div>
     </div>
