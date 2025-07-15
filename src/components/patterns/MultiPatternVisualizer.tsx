@@ -57,15 +57,9 @@ const MultiPatternVisualizer = ({ initialPatterns, useAdvancedVisualizer = true 
   }, [viewMode]);
 
   const simulateAll = () => {
-    setIsSimulating(true);
-    // The simulation is handled by child PatternVisualizer components
-    // We just need to update UI state here
-    
-    setTimeout(() => {
-      setIsSimulating(false);
-    }, 20000); // Assume simulations take at most 20 seconds
-    
-    toast.success('Running simulations on all patterns');
+    setIsSimulating(prev => !prev);
+    // Toggle simulation state - let ComparisonTimelineVisualizer handle its own timing
+    toast.success(isSimulating ? 'Stopping simulation' : 'Starting simulation on all patterns');
   };
 
   const resetAll = () => {

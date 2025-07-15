@@ -7,6 +7,7 @@ import FlowArchitectureVisualizer from "../visualization/FlowArchitectureVisuali
 import AlgorithmVisualizer from "../visualization/AlgorithmVisualizer"
 import ComparisonTimelineVisualizer from "../visualization/ComparisonTimelineVisualizer"
 import { parallelizationPattern, promptChainingPattern as chainOfThoughtPattern } from "@/lib/data/patterns/index"
+import { useState } from "react"
 
 interface FlowVisualizationConceptProps {
   onMarkComplete?: () => void
@@ -14,6 +15,16 @@ interface FlowVisualizationConceptProps {
 }
 
 export default function FlowVisualizationConcept({ onMarkComplete, onNavigateToNext }: FlowVisualizationConceptProps) {
+  const [isSimulating, setIsSimulating] = useState(false)
+  
+  const handleSimulate = () => {
+    setIsSimulating(prev => !prev)
+    // Toggle simulation state - let ComparisonTimelineVisualizer handle its own timing
+  }
+  
+  const handleReset = () => {
+    setIsSimulating(false)
+  }
   const tabs = [
     {
       id: 'fundamentals',
@@ -471,9 +482,9 @@ const SVGFlowVisualization = ({ agentData }) => {
             <CardContent>
               <ComparisonTimelineVisualizer
                 patterns={[parallelizationPattern, chainOfThoughtPattern]}
-                onSimulate={() => {}}
-                onReset={() => {}}
-                isSimulating={false}
+                onSimulate={handleSimulate}
+                onReset={handleReset}
+                isSimulating={isSimulating}
               />
             </CardContent>
           </Card>
