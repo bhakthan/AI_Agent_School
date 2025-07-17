@@ -52,8 +52,8 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
     // Add this quiz to completed quizzes
     const quizResult = {
       id: completedSession.id,
-      categoryId: completedSession.categoryId,
-      subCategoryId: completedSession.subCategoryId,
+      categoryId: completedSession.category,
+      subCategoryId: completedSession.category,
       difficulty: completedSession.difficulty,
       score: completedSession.score,
       timeSpent: completedSession.timeSpent,
@@ -74,7 +74,7 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
     );
     
     // Track categories completed
-    const categoryId = completedSession.categoryId;
+    const categoryId = completedSession.category;
     if (!progress.categoriesCompleted.includes(categoryId)) {
       progress.categoriesCompleted.push(categoryId);
     }
@@ -200,10 +200,11 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
       // Category-specific quiz
       questions = getQuizzesByCategory(selectedCategory.id, selectedDifficulty);
     } else {
-      // Persona-adaptive quiz
+      // Persona-adaptive quiz - use the first focus area as category
+      const primaryCategory = selectedPersona.focusAreas[0] || 'core-concepts';
       questions = generateAdaptiveQuiz(
         selectedPersona.id, 
-        selectedPersona.focusAreas, 
+        primaryCategory, 
         selectedDifficulty, 
         15
       );
@@ -215,9 +216,10 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
         questions = getQuizzesByCategory(selectedCategory.id);
       } else {
         // For persona-based quiz, try without difficulty filter
+        const primaryCategory = selectedPersona.focusAreas[0] || 'core-concepts';
         questions = generateAdaptiveQuiz(
           selectedPersona.id, 
-          selectedPersona.focusAreas, 
+          primaryCategory, 
           'beginner', // fallback to beginner
           15
         );
@@ -238,17 +240,19 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
 
     const session: QuizSession = {
       id: `quiz-${Date.now()}`,
-      userId: 'current-user',
-      categoryId: selectedCategory?.id || 'adaptive',
+      persona: selectedPersona.id,
+      category: selectedCategory?.id || 'adaptive',
       difficulty: selectedDifficulty,
       questions: questions.slice(0, 10), // Limit to 10 questions
+      userAnswers: [],
       currentQuestionIndex: 0,
       answers: {},
       score: 0,
+      timeStarted: Date.now(),
       startTime: new Date(),
       timeSpent: 0,
-      completed: false,
-      feedback: []
+      isCompleted: false,
+      completed: false
     };
 
     setCurrentSession(session);
@@ -272,10 +276,15 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
       [currentQuestion.id]: answerValue
     };
 
+    // Also update the userAnswers array
+    const updatedUserAnswers = [...currentSession.userAnswers];
+    updatedUserAnswers[currentSession.currentQuestionIndex] = answerValue;
+
     // Update session with the new answer
     const updatedSession = {
       ...currentSession,
-      answers: updatedAnswers
+      answers: updatedAnswers,
+      userAnswers: updatedUserAnswers
     };
 
     // Check if this is the last question
@@ -287,7 +296,8 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
         ...updatedSession,
         currentQuestionIndex: currentSession.currentQuestionIndex + 1,
         completed: true,
-        endTime: new Date(),
+        isCompleted: true,
+        timeCompleted: Date.now(),
         timeSpent: Math.round((new Date().getTime() - currentSession.startTime.getTime()) / 1000)
       };
       
