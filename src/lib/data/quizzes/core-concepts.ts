@@ -20,10 +20,12 @@ export const coreConceptsQuestions: QuizQuestion[] = [
     subCategory: 'agents',
     relatedTopics: ['artificial-intelligence', 'autonomy', 'goal-oriented'],
     relatedConcepts: ['artificial-intelligence', 'autonomy', 'goal-oriented'],
-    timeEstimate: 30
+    timeEstimate: 30,
+    persona: ['business-leader', 'no-code-engineer', 'ai-enthusiast', 'agent-developer', 'ai-engineer', 'agent-architect']
   },
   {
     id: 'core-b2',
+    text: 'What are the main components of an AI agent?',
     question: 'What are the main components of an AI agent?',
     options: [
       'Only a processor',
@@ -36,13 +38,14 @@ export const coreConceptsQuestions: QuizQuestion[] = [
     difficulty: 'beginner',
     category: 'core-concepts',
     subCategory: 'agents',
-    learningObjectives: ['Identify agent components', 'Understand agent architecture'],
+    relatedTopics: ['sensors', 'actuators', 'decision-making'],
     relatedConcepts: ['sensors', 'actuators', 'decision-making'],
-    persona: ['agent-designer', 'agent-developer', 'ai-enthusiast'],
-    timeEstimate: 35
+    timeEstimate: 30,
+    persona: ['business-leader', 'no-code-engineer', 'ai-enthusiast', 'agent-developer', 'ai-engineer', 'agent-architect']
   },
   {
     id: 'core-i1',
+    text: 'What is the difference between reactive and deliberative agents?',
     question: 'What is the difference between reactive and deliberative agents?',
     options: [
       'There is no difference',
@@ -55,13 +58,14 @@ export const coreConceptsQuestions: QuizQuestion[] = [
     difficulty: 'intermediate',
     category: 'core-concepts',
     subCategory: 'agents',
-    learningObjectives: ['Distinguish agent types', 'Understand agent behaviors'],
+    relatedTopics: ['reactive-systems', 'deliberative-systems', 'planning'],
     relatedConcepts: ['reactive-systems', 'deliberative-systems', 'planning'],
     persona: ['agent-developer', 'ai-engineer', 'agent-architect'],
     timeEstimate: 40
   },
   {
     id: 'core-a1',
+    text: 'How do multi-agent systems handle coordination and communication?',
     question: 'How do multi-agent systems handle coordination and communication?',
     options: [
       'They don\'t communicate',
@@ -74,9 +78,9 @@ export const coreConceptsQuestions: QuizQuestion[] = [
     difficulty: 'advanced',
     category: 'core-concepts',
     subCategory: 'agents',
-    learningObjectives: ['Understand multi-agent coordination', 'Implement communication protocols'],
+    relatedTopics: ['multi-agent-systems', 'communication-protocols', 'coordination'],
     relatedConcepts: ['multi-agent-systems', 'communication-protocols', 'coordination'],
-    persona: ['ai-engineer', 'agent-architect', 'ai-ops-engineer'],
-    timeEstimate: 60
+    persona: ['ai-engineer', 'agent-architect', 'agent-developer'],
+    timeEstimate: 45
   }
 ];

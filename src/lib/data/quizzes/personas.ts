@@ -6,7 +6,7 @@ export const userPersonas: UserPersona[] = [
     id: 'business-leader',
     name: 'Business Leader',
     description: 'Executives and managers focused on business value and strategic implementation',
-    focusAreas: ['business-value', 'strategy', 'roi'],
+    focusAreas: ['core-concepts', 'agent-ethics', 'agent-deployment'],
     timeAvailable: 30,
     targetDifficulty: 'beginner',
     learningStyle: 'conceptual'
@@ -15,7 +15,7 @@ export const userPersonas: UserPersona[] = [
     id: 'no-code-engineer',
     name: 'No-Code Engineer',
     description: 'Users who prefer visual tools and low-code solutions',
-    focusAreas: ['visual-tools', 'low-code', 'automation'],
+    focusAreas: ['core-concepts', 'agent-patterns', 'data-visualization'],
     timeAvailable: 45,
     targetDifficulty: 'beginner',
     learningStyle: 'visual'
@@ -24,7 +24,7 @@ export const userPersonas: UserPersona[] = [
     id: 'agent-designer',
     name: 'Agent Designer',
     description: 'UX/UI designers working on agent interfaces and experiences',
-    focusAreas: ['user-experience', 'interface-design', 'interaction-patterns'],
+    focusAreas: ['core-concepts', 'data-visualization', 'agent-ethics'],
     timeAvailable: 60,
     targetDifficulty: 'intermediate',
     learningStyle: 'design-oriented'
@@ -33,7 +33,7 @@ export const userPersonas: UserPersona[] = [
     id: 'agent-developer',
     name: 'Agent Developer',
     description: 'Software developers building AI agent applications',
-    focusAreas: ['development', 'integration', 'apis'],
+    focusAreas: ['agent-patterns', 'agent-integration', 'agent-deployment'],
     timeAvailable: 75,
     targetDifficulty: 'intermediate',
     learningStyle: 'hands-on'

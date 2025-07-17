@@ -14,6 +14,7 @@ export interface QuizQuestion {
   relatedConcepts?: string[];
   timeEstimate?: number;
   adaptiveWeight?: number;
+  persona?: string[];
 }
 
 export interface QuizSubCategory {

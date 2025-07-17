@@ -354,7 +354,7 @@ export const quizCategories: QuizCategory[] = [
 // Utility functions for quiz management
 export const getQuizzesByPersona = (persona: string, difficulty?: 'beginner' | 'intermediate' | 'advanced') => {
   const filteredQuestions = allQuestions.filter(question => {
-    const matchesPersona = question.persona.includes(persona);
+    const matchesPersona = Array.isArray(question.persona) && question.persona.includes(persona);
     const matchesDifficulty = !difficulty || question.difficulty === difficulty;
     return matchesPersona && matchesDifficulty;
   });
@@ -429,7 +429,7 @@ export const getQuizStatistics = () => {
   // Count by persona
   userPersonas.forEach(persona => {
     stats.byPersona[persona.id] = allQuestions.filter(q => 
-      q.persona.includes(persona.id)
+      q.persona && q.persona.includes(persona.id)
     ).length;
   });
   
@@ -452,7 +452,28 @@ export const generateAdaptiveQuiz = (
     !prioritizedQuestions.find(pq => pq.id === q.id)
   );
   
-  const combinedQuestions = [...prioritizedQuestions, ...additionalQuestions];
+  let combinedQuestions = [...prioritizedQuestions, ...additionalQuestions];
+  
+  // If no questions found, try without difficulty filter
+  if (combinedQuestions.length === 0) {
+    const allPersonaQuestions = getQuizzesByPersona(persona);
+    const allCategoryQuestions = getQuizzesByCategory(category);
+    
+    const allPrioritizedQuestions = allPersonaQuestions.filter(q => q.category === category);
+    const allAdditionalQuestions = allCategoryQuestions.filter(q => 
+      !allPrioritizedQuestions.find(pq => pq.id === q.id)
+    );
+    
+    combinedQuestions = [...allPrioritizedQuestions, ...allAdditionalQuestions];
+  }
+  
+  // If still no questions, fallback to core concepts
+  if (combinedQuestions.length === 0) {
+    combinedQuestions = getQuizzesByCategory('core-concepts', difficulty);
+    if (combinedQuestions.length === 0) {
+      combinedQuestions = getQuizzesByCategory('core-concepts');
+    }
+  }
   
   // Shuffle and return the requested number of questions
   const shuffled = combinedQuestions.sort(() => 0.5 - Math.random());
