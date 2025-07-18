@@ -66,6 +66,7 @@ export const multiAgentSystemsQuestions: QuizQuestion[] = [
     difficulty: 'beginner',
     category: 'multi-agent-systems',
     subCategory: 'autogen-framework',
+    relatedConcepts: ['autogen-framework', 'multi-agent-conversations', 'collaborative-ai'],
     persona: ['business-leader', 'agent-designer', 'ai-enthusiast', 'agent-developer']
   },
   {
@@ -83,6 +84,7 @@ export const multiAgentSystemsQuestions: QuizQuestion[] = [
     difficulty: 'intermediate',
     category: 'multi-agent-systems',
     subCategory: 'autogen-framework',
+    relatedConcepts: ['agent-types', 'conversation-orchestration', 'human-in-loop'],
     persona: ['agent-developer', 'ai-engineer', 'agent-architect']
   },
   {
@@ -100,6 +102,7 @@ export const multiAgentSystemsQuestions: QuizQuestion[] = [
     difficulty: 'advanced',
     category: 'multi-agent-systems',
     subCategory: 'autogen-framework',
+    relatedConcepts: ['enterprise-architecture', 'workflow-design', 'system-integration'],
     persona: ['agent-architect', 'ai-engineer', 'ai-ops-engineer']
   },
   // Original questions

@@ -537,7 +537,7 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
 
           <div className="flex items-center justify-between pt-4">
             <div className="text-sm text-muted-foreground">
-              Focus Areas: {currentQuestion.relatedConcepts.slice(0, 3).join(', ')}
+              Focus Areas: {currentQuestion.relatedConcepts ? currentQuestion.relatedConcepts.slice(0, 3).join(', ') : 'General concepts'}
             </div>
             <div className="flex gap-2">
               <Button variant="outline" onClick={resetQuiz}>
