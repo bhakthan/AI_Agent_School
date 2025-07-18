@@ -19,6 +19,7 @@ export { evaluatorOptimizerPattern } from './evaluatorOptimizer';
 export { autonomousWorkflowPattern } from './autonomousWorkflow';
 export { deepResearcherPattern } from './deepResearcher';
 export { agentEvaluationPattern } from './agentEvaluation';
+export { autogenPattern } from './autogen';
 
 // Export consolidated pattern array
 import { reactAgentPattern } from './reactAgent';
@@ -38,6 +39,7 @@ import { evaluatorOptimizerPattern } from './evaluatorOptimizer';
 import { autonomousWorkflowPattern } from './autonomousWorkflow';
 import { deepResearcherPattern } from './deepResearcher';
 import { agentEvaluationPattern } from './agentEvaluation';
+import { autogenPattern } from './autogen';
 
 export const agentPatterns = [
   reactAgentPattern,
@@ -56,7 +58,8 @@ export const agentPatterns = [
   evaluatorOptimizerPattern,
   autonomousWorkflowPattern,
   deepResearcherPattern,
-  agentEvaluationPattern
+  agentEvaluationPattern,
+  autogenPattern
 ];
 
 // Export specific patterns for easy access

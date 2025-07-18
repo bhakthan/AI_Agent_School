@@ -205,6 +205,13 @@ export const quizCategories: QuizCategory[] = [
         description: 'Protocols for agent communication',
         prerequisites: ['fundamentals'],
         questions: multiAgentSystemsQuestions.filter(q => q.subCategory === 'communication-protocols')
+      },
+      {
+        id: 'autogen-framework',
+        name: 'AutoGen Framework',
+        description: 'Microsoft AutoGen for multi-agent conversations',
+        prerequisites: ['fundamentals'],
+        questions: multiAgentSystemsQuestions.filter(q => q.subCategory === 'autogen-framework')
       }
     ]
   },
@@ -353,13 +360,34 @@ export const quizCategories: QuizCategory[] = [
 
 // Utility functions for quiz management
 export const getQuizzesByPersona = (persona: string, difficulty?: 'beginner' | 'intermediate' | 'advanced') => {
-  const filteredQuestions = allQuestions.filter(question => {
-    const matchesPersona = Array.isArray(question.persona) && question.persona.includes(persona);
-    const matchesDifficulty = !difficulty || question.difficulty === difficulty;
-    return matchesPersona && matchesDifficulty;
-  });
-  
-  return filteredQuestions;
+  try {
+    const filteredQuestions = allQuestions.filter(question => {
+      try {
+        // Ensure question exists and has required properties
+        if (!question || typeof question !== 'object') {
+          return false;
+        }
+        
+        // Check if persona property exists and is an array
+        const hasPersona = question.persona && Array.isArray(question.persona);
+        if (!hasPersona) {
+          return false; // Skip questions without persona array
+        }
+        
+        const matchesPersona = question.persona.includes(persona);
+        const matchesDifficulty = !difficulty || question.difficulty === difficulty;
+        return matchesPersona && matchesDifficulty;
+      } catch (err) {
+        console.error('Error processing question:', question, err);
+        return false;
+      }
+    });
+    
+    return filteredQuestions;
+  } catch (err) {
+    console.error('Error in getQuizzesByPersona:', err);
+    return [];
+  }
 };
 
 export const getQuizzesByCategory = (categoryId: string, difficulty?: 'beginner' | 'intermediate' | 'advanced') => {

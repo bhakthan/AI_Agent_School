@@ -303,6 +303,251 @@ class AgentAuction {
           </Card>
         </div>
       )
+    },
+    {
+      id: 'autogen-framework',
+      title: 'AutoGen Framework',
+      description: 'Microsoft AutoGen for multi-agent conversations',
+      icon: <Users className="w-4 h-4" />,
+      level: 'architecture' as const,
+      content: (
+        <div className="space-y-6">
+          {/* AutoGen Overview */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Users className="w-5 h-5" />
+                Microsoft AutoGen Framework
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-base leading-relaxed">
+                AutoGen is a framework that enables creation of LLM applications using multiple agents that can 
+                converse with each other to solve tasks. It simplifies the orchestration of multi-agent workflows 
+                and provides patterns for agent collaboration, making it easier to build complex AI systems.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-green-600">Key Features</h4>
+                  <ul className="space-y-1 text-sm">
+                    <li>• Conversational AI with multiple agents</li>
+                    <li>• Customizable agent roles and behaviors</li>
+                    <li>• Human-in-the-loop capabilities</li>
+                    <li>• Integration with various LLM providers</li>
+                    <li>• Code execution and validation</li>
+                  </ul>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-semibold text-blue-600">Use Cases</h4>
+                  <ul className="space-y-1 text-sm">
+                    <li>• Collaborative problem solving</li>
+                    <li>• Code generation and review</li>
+                    <li>• Research and analysis tasks</li>
+                    <li>• Educational content creation</li>
+                    <li>• Complex workflow automation</li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* AutoGen Architecture */}
+          <Card>
+            <CardHeader>
+              <CardTitle>AutoGen Architecture Components</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                <Card className="border-blue-200">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-blue-600 text-lg">Conversable Agents</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-3">Base class for agents that can send and receive messages</p>
+                    <ul className="text-xs space-y-1">
+                      <li>• Message handling</li>
+                      <li>• Conversation management</li>
+                      <li>• Role-based behavior</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-green-200">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-green-600 text-lg">Assistant Agents</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-3">AI-powered agents with LLM capabilities</p>
+                    <ul className="text-xs space-y-1">
+                      <li>• LLM integration</li>
+                      <li>• Function calling</li>
+                      <li>• Code generation</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-purple-200">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-purple-600 text-lg">User Proxy Agents</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-3">Agents that represent human users in conversations</p>
+                    <ul className="text-xs space-y-1">
+                      <li>• Human input solicitation</li>
+                      <li>• Code execution</li>
+                      <li>• Approval workflows</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                <h4 className="font-semibold mb-3">Basic AutoGen Implementation</h4>
+                <pre className="text-sm overflow-x-auto">{`import autogen
+
+# Configure LLM
+config_list = [{
+    "model": "gpt-4",
+    "api_key": "your_api_key"
+}]
+
+# Create assistant agent
+assistant = autogen.AssistantAgent(
+    name="assistant",
+    llm_config={"config_list": config_list}
+)
+
+# Create user proxy agent
+user_proxy = autogen.UserProxyAgent(
+    name="user_proxy",
+    human_input_mode="NEVER",
+    code_execution_config={"work_dir": "coding"}
+)
+
+# Start conversation
+user_proxy.initiate_chat(
+    assistant,
+    message="Help me solve this problem step by step"
+)`}</pre>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* AutoGen vs Other Frameworks */}
+          <Card>
+            <CardHeader>
+              <CardTitle>AutoGen vs Other Multi-Agent Frameworks</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse border border-gray-300">
+                  <thead>
+                    <tr className="bg-gray-50 dark:bg-gray-800">
+                      <th className="border border-gray-300 p-2 text-left">Feature</th>
+                      <th className="border border-gray-300 p-2 text-center">AutoGen</th>
+                      <th className="border border-gray-300 p-2 text-center">CrewAI</th>
+                      <th className="border border-gray-300 p-2 text-center">LangGraph</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    <tr>
+                      <td className="border border-gray-300 p-2 font-medium">Conversation Focus</td>
+                      <td className="border border-gray-300 p-2 text-center">✅ High</td>
+                      <td className="border border-gray-300 p-2 text-center">🔶 Medium</td>
+                      <td className="border border-gray-300 p-2 text-center">🔶 Medium</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 p-2 font-medium">Code Execution</td>
+                      <td className="border border-gray-300 p-2 text-center">✅ Built-in</td>
+                      <td className="border border-gray-300 p-2 text-center">🔶 Custom</td>
+                      <td className="border border-gray-300 p-2 text-center">🔶 Custom</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 p-2 font-medium">Human-in-Loop</td>
+                      <td className="border border-gray-300 p-2 text-center">✅ Native</td>
+                      <td className="border border-gray-300 p-2 text-center">❌ Limited</td>
+                      <td className="border border-gray-300 p-2 text-center">🔶 Custom</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 p-2 font-medium">Microsoft Integration</td>
+                      <td className="border border-gray-300 p-2 text-center">✅ Excellent</td>
+                      <td className="border border-gray-300 p-2 text-center">🔶 Good</td>
+                      <td className="border border-gray-300 p-2 text-center">🔶 Good</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* AutoGen Conversation Patterns */}
+          <Card>
+            <CardHeader>
+              <CardTitle>AutoGen Conversation Patterns</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <Card className="border-indigo-200">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-indigo-600 text-lg">Two-Agent Chat</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-3">Direct conversation between two agents</p>
+                    <ul className="text-xs space-y-1">
+                      <li>• Question-answer format</li>
+                      <li>• Code review scenarios</li>
+                      <li>• Problem-solving dialogue</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-orange-200">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-orange-600 text-lg">Group Chat</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-3">Multiple agents collaborating in a group</p>
+                    <ul className="text-xs space-y-1">
+                      <li>• Moderated discussions</li>
+                      <li>• Specialized expert agents</li>
+                      <li>• Consensus building</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-teal-200">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-teal-600 text-lg">Sequential Chat</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-3">Agents working in a predefined sequence</p>
+                    <ul className="text-xs space-y-1">
+                      <li>• Pipeline processing</li>
+                      <li>• Step-by-step workflows</li>
+                      <li>• Quality gates</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-pink-200">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-pink-600 text-lg">Nested Chat</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm mb-3">Hierarchical conversations with sub-groups</p>
+                    <ul className="text-xs space-y-1">
+                      <li>• Complex problem decomposition</li>
+                      <li>• Parallel workstreams</li>
+                      <li>• Result synthesis</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )
     }
   ]
 

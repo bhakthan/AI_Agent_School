@@ -192,16 +192,29 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
   }, [currentSession, timeRemaining, currentAnswer, onQuizComplete, calculateQuizScore, generateQuizFeedback]);
 
   const startQuiz = useCallback(() => {
-    if (!selectedPersona) return;
+    console.log('startQuiz called', { 
+      selectedPersona: selectedPersona?.id, 
+      selectedCategory: selectedCategory?.id, 
+      selectedDifficulty 
+    });
+    
+    // For topic-based quizzes, we don't need a persona, but for persona-based quizzes we do
+    if (!selectedCategory && !selectedPersona) {
+      console.error('Neither category nor persona selected');
+      return;
+    }
 
     let questions: QuizQuestion[] = [];
     
     if (selectedCategory) {
       // Category-specific quiz
+      console.log('Getting questions by category:', selectedCategory.id, selectedDifficulty);
       questions = getQuizzesByCategory(selectedCategory.id, selectedDifficulty);
-    } else {
+      console.log('Found questions:', questions.length);
+    } else if (selectedPersona) {
       // Persona-adaptive quiz - use the first focus area as category
       const primaryCategory = selectedPersona.focusAreas[0] || 'core-concepts';
+      console.log('Using persona adaptive quiz with category:', primaryCategory);
       questions = generateAdaptiveQuiz(
         selectedPersona.id, 
         primaryCategory, 
@@ -211,10 +224,12 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
     }
 
     if (questions.length === 0) {
+      console.log('No questions found, trying without difficulty filter');
       // If no questions found for the selected difficulty, try to get questions from all difficulty levels
       if (selectedCategory) {
         questions = getQuizzesByCategory(selectedCategory.id);
-      } else {
+        console.log('Found questions without difficulty filter:', questions.length);
+      } else if (selectedPersona) {
         // For persona-based quiz, try without difficulty filter
         const primaryCategory = selectedPersona.focusAreas[0] || 'core-concepts';
         questions = generateAdaptiveQuiz(
@@ -235,12 +250,14 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
       return;
     }
 
+    console.log('Starting quiz with', questions.length, 'questions');
+
     // Shuffle questions
     questions = questions.sort(() => Math.random() - 0.5);
 
     const session: QuizSession = {
       id: `quiz-${Date.now()}`,
-      persona: selectedPersona.id,
+      persona: selectedPersona?.id || 'topic-based',
       category: selectedCategory?.id || 'adaptive',
       difficulty: selectedDifficulty,
       questions: questions.slice(0, 10), // Limit to 10 questions
@@ -823,7 +840,7 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
               </div>
             </div>
 
-            {selectedPersona && (
+            {(selectedPersona || selectedCategory) && (
               <div className="space-y-4">
                 <Separator />
                 <div>
@@ -856,7 +873,7 @@ const AdaptiveLearningQuiz: React.FC<AdaptiveLearningQuizProps> = ({ onQuizCompl
                 <div className="text-center">
                   <Button onClick={startQuiz} size="lg" className="min-w-32">
                     <Play size={16} className="mr-2" />
-                    Start Adaptive Quiz
+                    {selectedCategory ? 'Start Topic Quiz' : 'Start Adaptive Quiz'}
                   </Button>
                 </div>
               </div>
