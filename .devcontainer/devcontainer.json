@@ -2,9 +2,9 @@
   "name": "Workbench template",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
   "hostRequirements": {
-    "storage": "64gb",
-    "memory": "32gb",
-    "cpus": 8
+    "storage": "32gb",
+    "memory": "8gb",
+    "cpus": 2
   },
   // Runs automatically after Prebuild Template environment is created.
   "onCreateCommand": ".devcontainer/onCreate.sh",
